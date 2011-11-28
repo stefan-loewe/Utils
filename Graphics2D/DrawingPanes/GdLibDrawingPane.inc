@@ -174,7 +174,7 @@ class GdLibDrawingPane extends DrawingPane
         if($this->strokeWidth > 0 && $this->fillColor)
         {
             // ... one for the "border" ...
-            $this->drawFilledArc($center, $dimension->resizeBy(new Point($this->strokeWidth * 2, $this->strokeWidth * 2)), $this->strokeColor);
+            $this->drawFilledArc($center, $dimension->resizeBy(new Dimension($this->strokeWidth * 2, $this->strokeWidth * 2)), $this->strokeColor);
 
             // and one for the "filling"
             $this->drawFilledArc($center, $dimension);
@@ -271,15 +271,15 @@ class GdLibDrawingPane extends DrawingPane
     public function drawRectangle(Point $topLeftCorner, Dimension $dimension)
     {
         // with GDLib, a rectangle is always one pixel too wide and high, so we subtract 1 in each dimension
-        $dimension = $dimension->resizeBy(new Point(-1, -1));
+        $dimension = $dimension->resizeBy(new Dimension(-1, -1));
 
         if($this->strokeWidth > 0 && $this->strokeColor != null)
         {
             imagesetthickness($this->document, $this->strokeWidth);
 
-            $borderTlc  = $topLeftCorner->moveBy(new Point(-$this->strokeWidth / 2, -$this->strokeWidth / 2));
+            $borderTlc  = $topLeftCorner->moveBy(new Dimension(-$this->strokeWidth / 2, -$this->strokeWidth / 2));
 
-            $borderDim  = $dimension->resizeBy(new Point($this->strokeWidth + $this->strokeWidth % 2, $this->strokeWidth + $this->strokeWidth % 2));
+            $borderDim  = $dimension->resizeBy(new Dimension($this->strokeWidth + $this->strokeWidth % 2, $this->strokeWidth + $this->strokeWidth % 2));
 
             imagerectangle($this->document,
                     $borderTlc->x,

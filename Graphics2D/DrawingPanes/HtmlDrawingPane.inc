@@ -99,7 +99,7 @@ class HtmlDrawingPane extends DomDrawingPane
 
     public function drawRectangle(Point $topLeftCorner, Dimension $dimension)
     {
-        $topLeftCorner = $topLeftCorner->moveBy(new Point(-$this->strokeWidth, -$this->strokeWidth));
+        $topLeftCorner = $topLeftCorner->moveBy(new Dimension(-$this->strokeWidth, -$this->strokeWidth));
 
         $style = 'left:'.($topLeftCorner->x).'px;top:'.($topLeftCorner->y).'px;';
 

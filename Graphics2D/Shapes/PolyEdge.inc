@@ -3,6 +3,7 @@
 namespace Utils\Graphics2D\Shapes;
 
 use Utils\Geom\Point;
+use Utils\Geom\Dimension;
 use Utils\Graphics2D\Shapes\Styles\ShapeStyle;
 use Utils\Graphics2D\Shapes\Styles\EdgeStyle;
 use Utils\Graphics2D\DrawingPanes\DrawingPane;
@@ -45,17 +46,17 @@ class PolyEdge extends Edge
 
             // draw a horizontal connector from the first target to the last target, in the middle of the gap between the source and the targets
             if($this->targets->count() > 1)
-                $document->drawLine($childF->moveBy(new Point(0, -$offset)),
-                                        $childL->moveBy(new Point(0, -$offset)));
+                $document->drawLine($childF->moveBy(new Dimension(0, -$offset)),
+                                        $childL->moveBy(new Dimension(0, -$offset)));
 
             // draw a vertical line from the bottom border of the source to the horizontal connector
-            $document->drawLine($source, $source->moveBy(new Point(0, $offset)));
+            $document->drawLine($source, $source->moveBy(new Dimension(0, $offset)));
 
             // draw a vertical line from the top border of each target to the horizontal connector
             foreach($this->targets as $target)
             {
                 $south  = $target->getConnectionPoint(Shape::NORTH);
-                $north  = $south->moveBy(new Point(0, -$offset));
+                $north  = $south->moveBy(new Dimension(0, -$offset));
                 $document->drawLine($north, $south);
             }
         }

@@ -58,10 +58,10 @@ class Ellipse extends Shape
     public function getConnectionPoint($orientation)
     {
         if($orientation === self::NORTH)
-            $offset = new Point(0, -$this->style->height);
+            $offset = new Dimension(0, -$this->style->height);
 
         else if($orientation === self::SOUTH)
-            $offset = new Point(0, $this->dimension->height);
+            $offset = new Dimension(0, $this->dimension->height);
 
         return $this->center->moveBy($offset);
     }

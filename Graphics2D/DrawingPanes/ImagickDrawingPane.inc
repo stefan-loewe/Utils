@@ -116,10 +116,10 @@ class ImagickDrawingPane extends ImageDrawingPane
 
         // border "grows" in both directions, so subtract half the stroke width
         // subtract one more pixel in each dimension, as it's positioned wrong
-        $topLeftCorner  = $topLeftCorner->moveBy(new Point(-$this->strokeWidth / 2 - 1, -$this->strokeWidth / 2 - 1));
+        $topLeftCorner  = $topLeftCorner->moveBy(new Dimension(-$this->strokeWidth / 2 - 1, -$this->strokeWidth / 2 - 1));
 
         // for some reason rectangle is one pixel to small, so add one pixel in each dimension
-        $dimension      = $dimension->resizeBy(new Point($this->strokeWidth + 1, $this->strokeWidth + 1));
+        $dimension      = $dimension->resizeBy(new Dimension($this->strokeWidth + 1, $this->strokeWidth + 1));
 
         $this->draw->rectangle($topLeftCorner->x,
                 $topLeftCorner->y,

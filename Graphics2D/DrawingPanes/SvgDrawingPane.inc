@@ -45,7 +45,7 @@ class SvgDrawingPane extends DomDrawingPane
         if($this->strokeWidth % 2)
         {
             foreach($points as $index => $point)
-                $points[$index] = $points[$index]->moveBy(new Point(0.25, 0.25));
+                $points[$index] = $points[$index]->moveBy(new Dimension(0.25, 0.25));
         }
 
         $this->fragment->appendXML('<polyline'
@@ -93,8 +93,8 @@ class SvgDrawingPane extends DomDrawingPane
      */
     public function drawRectangle(Point $topLeftCorner, Dimension $dimension)
     {
-        $topLeftCorner  = $topLeftCorner->moveBy(new Point(-$this->strokeWidth / 2, -$this->strokeWidth / 2));
-        $dimension      = $dimension->resizeBy(new Point($this->strokeWidth, $this->strokeWidth));
+        $topLeftCorner  = $topLeftCorner->moveBy(new Dimension(-$this->strokeWidth / 2, -$this->strokeWidth / 2));
+        $dimension      = $dimension->resizeBy(new Dimension($this->strokeWidth, $this->strokeWidth));
 
         $this->fragment->appendXML('<rect'
             .' class="node"'

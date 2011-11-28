@@ -58,10 +58,10 @@ class Rectangle extends Shape
     public function getConnectionPoint($orientation)
     {
         if($orientation === self::NORTH)
-            $offset = new Point($this->dimension->width / 2, -$this->style->border->width);
+            $offset = new Dimension($this->dimension->width / 2, -$this->style->border->width);
 
         else if($orientation === self::SOUTH)
-            $offset = new Point($this->dimension->width / 2, $this->dimension->height + $this->style->border->width);
+            $offset = new Dimension($this->dimension->width / 2, $this->dimension->height + $this->style->border->width);
 
         return $this->topLeftCorner->moveBy($offset);
     }
