@@ -47,20 +47,33 @@ class Dimension
     }
 
     /**
-     * This method resizes a Dimension by the offset encoded by a Point.
+     * This method resizes a dimension by the offset encoded by a dimension.
      *
-     * @param Point $point the offset by which the Dimension has to be resized
+     * @param Dimension $dimension the offset by which the dimension has to be resized
      * @return Dimension a new Dimension resized by the offset encoded in the given Point
     */
-    public function resizeBy(Point $point)
+    public function resizeBy(Dimension $dimension)
     {
-        return new Dimension($this->width + $point->x, $this->height + $point->y);
+        return new Dimension($this->width + $dimension->width, $this->height + $dimension->height);
     }
 
     /**
-     * This method returns a string representation of the Dimension.
+     * This method resizes a dimension to the size of another dimension.
+     * 
+     * This is only useful for chaining, as it merely is an alias for a copy-constructor.
      *
-     * @return string the string representation of the Dimension
+     * @param Dimension $dimension the offset by which the Dimension has to be resized
+     * @return Dimension a new Dimension resized by the offset encoded in the given Point
+    */
+    public function resizeTo(Dimension $dimension)
+    {
+        return new Dimension($dimension->width, $dimension->height);
+    }
+
+    /**
+     * This method returns a string representation of the dimension.
+     *
+     * @return string the string representation of the dimension
      */
     public function __toString()
     {

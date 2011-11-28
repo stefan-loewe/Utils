@@ -50,31 +50,29 @@ class Point
      * This method sets the x-coordinate of the point.
      *
      * @param int $x the new x-coordinate of the point
-     * @return Point this point
+     * @return \Utils\Geom\Point this point
      */
     public function setX($x)
     {
-        $this->x = $x;
-
-        return $this;
+        return new Point($x, $this->y);
     }
 
     /**
      * This method sets the y-coordinate of the point.
      *
      * @param int $y the new y-coordinate of the point
-     * @return Point this point
+     * @return \Utils\Geom\Point this point
      */
     public function setY($y)
     {
-        $this->y = $y;
+        return new Point($this->x, $y);
     }
 
     /**
-     * This method moves a point by an offset, given as another Point.
+     * This method moves a point by an offset, given as another point.
      *
-     * @param Point $point the Point by which this Point shall be moved by
-     * @return Point a new Point moved by the offset encapsulated by the given Point
+     * @param \Utils\Geom\Point $point the point by which this point shall be moved by
+     * @return \Utils\Geom\Point a new point moved by the offset encapsulated by the given point
      */
     public function moveBy(Point $point)
     {
@@ -82,9 +80,20 @@ class Point
     }
 
     /**
-     * This method returns a string representation of the Point.
+     * This method moves a point to another point, given as another point.
      *
-     * @return string the string representation of the Point
+     * @param \Utils\Geom\Point $point the point by which this point shall be moved by
+     * @return \Utils\Geom\Point a new point moved by the offset encapsulated by the given point
+     */
+    public function moveTo(Point $point)
+    {
+        return new Point($this->x + $point->x, $this->y + $point->y);
+    }
+
+    /**
+     * This method returns a string representation of the point.
+     *
+     * @return string the string representation of the point
      */
     public function __toString()
     {

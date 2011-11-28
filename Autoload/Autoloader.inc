@@ -22,7 +22,7 @@ class Autoloader
     /**
      * This method acts as the constructor of the class.
      *
-     * @param type $baseDirectory the base directory from where to start looking for source files
+     * @param string $baseDirectory the base directory from where to start looking for source files
      */
     public function __construct($baseDirectory)
     {
