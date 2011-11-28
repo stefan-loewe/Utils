@@ -25,7 +25,7 @@ class HTMLControlServer extends Server
      */
     public function __construct($port)
     {
-        parent::__construct($port);
+        parent::__construct('127.0.0.1', $port, 0);
 
         $this->callbacks = new \SplObjectStorage();
     }
