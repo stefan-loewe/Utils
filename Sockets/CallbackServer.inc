@@ -16,7 +16,7 @@ class CallbackServer extends Server
     /**
      * collection of closures that are registered with the CallbackServer
      *
-     * @var ArrayObject
+     * @var \ArrayObject
      */
     private $callbacks = null;
 
@@ -38,7 +38,7 @@ class CallbackServer extends Server
      * This method registers a new callback for the server.
      *
      * @param \Closure $callback the callback to register
-     * @return CallbackServer this callback server
+     * @return CallbackServer $this
      */
     public function register(\Closure $callback)
     {
@@ -51,7 +51,7 @@ class CallbackServer extends Server
      * This method unregisters a callback from the server.
      *
      * @param \Closure $callback the callback to unregister
-     * @return CallbackServer this callback server
+     * @return CallbackServer $this
      */
     public function unregister(\Closure $callback)
     {
@@ -75,14 +75,23 @@ class CallbackServer extends Server
 
         Logger::log(Logger::DEBUG, 'client said: '.$message);
 
-        $request = HttpRequestFactory::createRequest($message);
+        $this->executeCallback($clientSocket, HttpRequestFactory::createRequest($message));
 
+        $this->disconnectClient($clientSocket);
+    }
+
+    /**
+     * This method actually executes the callbacks.
+     *
+     * @param ServerSocket the server socket of the connected client
+     * @param HttpRequest $request the request to process
+     */
+    protected function executeCallback(ServerSocket $clientSocket, HttpRequest $request)
+    {
         foreach($this->callbacks as $currentCallback)
         {
             if(($this->isRunning = $currentCallback->__invoke($request)))
                 break;
         }
-
-        $this->disconnectClient($clientSocket);
     }
 }

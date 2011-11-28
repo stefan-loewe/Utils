@@ -2,6 +2,8 @@
 
 namespace Utils\Sockets;
 
+use Utils\Http\HttpRequest;
+
 /**
  * This class implements a callback server for WinBinder HTMLControls.
  *
@@ -9,12 +11,12 @@ namespace Utils\Sockets;
  *
  * @todo this has to be moved over to the woody/FotoImporter project/namespace
  */
-class HTMLControlServer extends Server
+class HTMLControlServer extends CallbackServer
 {
     /**
      * collection of closures that are registered with the HTMLControlServer
      *
-     * @var SplObjectStorage
+     * @var \SplObjectStorage
      */
     private $callbacks = null;
 
@@ -35,76 +37,40 @@ class HTMLControlServer extends Server
      *
      * @param HTMLControl $control the HTMLControl to which the callback has to be registered
      * @param \Closure $callback the callback to register
-     * @return CallbackServer this callback server
+     * @return HtmlControlServer $this
      */
-    public function register(HTMLControl $control, \Closure $callback)
+    public function register(\Closure $callback, HTMLControl $control)
     {
         $this->callbacks[$control] = $callback;
+strict errors in register and unregister ... fix?
+        return $this;
     }
 
     /**
      * This method unregisters the callback registered for the given HTMLControl.
      *
      * @param HTMLControl $control the HTMLControl for which the callback has to be removed.
+     * @return HtmlControlServer $this
      */
-    public function unregister(HTMLControl $control)
+    public function unregister(\Closure $callback, HTMLControl $control)
     {
         $this->callbacks->detach($control);
+
+        return $this;
     }
 
     /**
-     * This method processes a client request. In order to do so, the message of the request is passed in every registered callback, and the callback itself has to determine, if this request is of interest for it, and if so, process the request accordingly.
+     * This method actually executes the callbacks.
      *
-     * @param ServerSocket $clientSocket the socket of the client request
-     * @see HTTP\HttpRequest* for a better handling of HTTP requests
-     * @see CallbackServer for a better implementation
+     * @param ServerSocket the server socket of the connected client
+     * @param HttpRequest $request the request to process
      */
-    protected function processClient(ServerSocket $clientSocket)
+    protected function executeCallback(ServerSocket $clientSocket, HttpRequest $request)
     {
-        $message = trim($clientSocket->read(1024));
+        foreach($this->callbacks as $currentCallback)
+            $currentCallback->__invoke($request);
 
-        $payload = $this->extractPayload($message);
-
-        foreach($this->callbacks as $control)
-            $this->callbacks[$control]->__invoke($payload);
-
-        $this->disconnectClient($clientSocket);
-    }
-
-    /**
-     * This method extracts the payload of (what is expected to be) a HTTP POST request.
-     *
-     * @param type $message the raw message of the request
-     * @return string the POST string of the (what is expected to be) a HTTP POST request.
-     * @todo might be redundant once HTTP\HttpRequest* is used, or class gets obsolete in favour of CallbackServer
-     */
-    private function extractPayload($message)
-    {
-        // get the position of the end of the HTTP header (delimited by a double line break)
-        $doubleLineBreakPos = strpos($message, "\r\n\r\n");
-
-        // right after the header, the POST string starts
-        return substr($message, $doubleLineBreakPos + 4);
-    }
-
-    /**
-     * This method extracts the parameters from a URL string.
-     *
-     * @param string $urlQuery the URL string from which the parameters are to be extracted
-     * @return string[] the parameters as key-value pairs
-     * @todo might be redundant once HTTP\HttpRequest* is used, or class gets obsolete in favour of CallbackServer
-     */
-    public static function getParameters($urlQuery)
-    {
-        $parameters = array();
-
-        foreach(explode('&', $urlQuery) as $keyValuePair)
-        {
-            $keyValuePair = explode('=', $keyValuePair);
-            $parameters[$keyValuePair[0]] = $keyValuePair[1];
-        }
-
-        return $parameters;
+        $clientSocket->write("goodbye " + $request->getKeyValuePairs()['id']);
     }
 
     /**
