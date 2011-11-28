@@ -69,14 +69,14 @@ class Point
     }
 
     /**
-     * This method moves a point by an offset, given as another point.
+     * This method moves a point by an offset, given as dimension.
      *
-     * @param \Utils\Geom\Point $point the point by which this point shall be moved by
+     * @param \Utils\Geom\Dimension $dimension the dimension by which this point shall be moved by
      * @return \Utils\Geom\Point a new point moved by the offset encapsulated by the given point
      */
-    public function moveBy(Point $point)
+    public function moveBy(Dimension $dimension)
     {
-        return new Point($this->x + $point->x, $this->y + $point->y);
+        return new Point($this->x + $dimension->width, $this->y + $dimension->height);
     }
 
     /**

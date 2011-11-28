@@ -59,7 +59,7 @@ class Dimension
 
     /**
      * This method resizes a dimension to the size of another dimension.
-     * 
+     *
      * This is only useful for chaining, as it merely is an alias for a copy-constructor.
      *
      * @param Dimension $dimension the offset by which the Dimension has to be resized
