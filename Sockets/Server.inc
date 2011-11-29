@@ -14,14 +14,14 @@ abstract class Server
      *
      * @var ServerSocket
      */
-    protected $socket    = null;
+    protected $socket   = null;
 
     /**
      * the collection of clients currently connected to the server
      *
      * @var array[string]ServerSocket
      */
-    protected $clients    = array();
+    protected $clients  = array();
 
     /**
      * the adress of the socket
@@ -35,14 +35,14 @@ abstract class Server
      *
      * @var int
      */
-    private $port    = 9999;
+    private $port       = 9999;
 
     /**
      * the timeout of the socket-select call
      *
      * @var int
      */
-    protected $timeout    = 0;
+    protected $timeout  = 0;
 
     /**
      * This method acts as the constructor of the class.
@@ -128,11 +128,11 @@ abstract class Server
     {
         $this->isRunning = FALSE;
 
-        //Logger::log(Logger::INFO, 'shutting down server ...!');
+        Logger::log(Logger::INFO, 'shutting down server ...!');
         foreach($this->clients as $client)
             $this->disconnectClient($client);
 
-        //Logger::log(Logger::INFO, 'closing server socket');
+        Logger::log(Logger::INFO, 'closing server socket');
         $this->socket->close();
     }
 
