@@ -5,21 +5,15 @@ namespace Utils\Sockets;
 use Utils\Http\HttpRequest;
 
 /**
- * This class implements a callback server for WinBinder HTMLControls.
+ * This class implements a callback server for WinBinder HtmlControl.
  *
- * This class implements a callback server for WinBinder HTMLControls. As WinBinder HTMLControls cannot for interact with the main application in the ordinar way, they have to communicate with the main application through a socket connection. To achieve this, the main application starts an instance of this class, registers a callback that handles requests for any interactive HTMLControl.
+ * This class implements a callback server for WinBinder HtmlControl. As WinBinder HtmlControl cannot for interact with the main application in the ordinar way, they have to communicate with the main application through a socket connection. To achieve this, the main application starts an instance of this class, registers a callback that handles requests for any interactive HtmlControl.
+ * The class uses a \SplObjectStorage collection for storing callback associated to an HtmlControl
  *
  * @todo this has to be moved over to the woody/FotoImporter project/namespace
  */
-class HTMLControlServer extends CallbackServer
+class HtmlControlServer extends CallbackServer
 {
-    /**
-     * collection of closures that are registered with the HTMLControlServer
-     *
-     * @var \SplObjectStorage
-     */
-    private $callbacks = null;
-
     /**
      * This method acts as the constructor of the class.
      *
@@ -33,26 +27,26 @@ class HTMLControlServer extends CallbackServer
     }
 
     /**
-     * This method registers a new callback for the given HTMLControl.
+     * This method registers a new callback for the given HtmlControl.
      *
-     * @param HTMLControl $control the HTMLControl to which the callback has to be registered
+     * @param \Woody\Components\Controls\HtmlControl $control the HtmlControl to which the callback has to be registered
      * @param \Closure $callback the callback to register
      * @return HtmlControlServer $this
      */
-    public function register(\Closure $callback, HTMLControl $control)
+    public function register(\Closure $callback, HtmlControl $control)
     {
         $this->callbacks[$control] = $callback;
-strict errors in register and unregister ... fix?
+
         return $this;
     }
 
     /**
-     * This method unregisters the callback registered for the given HTMLControl.
+     * This method unregisters the callback registered for the given HtmlControl.
      *
-     * @param HTMLControl $control the HTMLControl for which the callback has to be removed.
+     * @param HtmlControl $control the HtmlControl for which the callback has to be removed.
      * @return HtmlControlServer $this
      */
-    public function unregister(\Closure $callback, HTMLControl $control)
+    public function unregister(\Closure $callback, HtmlControl $control)
     {
         $this->callbacks->detach($control);
 
