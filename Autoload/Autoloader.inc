@@ -38,11 +38,18 @@ class Autoloader
      */
     public function autoload($className)
     {
-        if(file_exists($filename = $this->getFileName($className)))
-            require_once $filename;
+        try
+        {
+            if(file_exists($filename = $this->getFileName($className)))
+                require_once $filename;
 
-        else
-            throw new SourceFileNotFoundException($className);
+            else
+                throw new SourceFileNotFoundException($className);
+        }
+        catch(SourceFileNotFoundException $sfnfe)
+        {
+            var_dump($sfnfe->getMessage());
+        }
     }
 
     /**
