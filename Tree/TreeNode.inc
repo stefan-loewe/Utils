@@ -72,8 +72,6 @@ class TreeNode implements \IteratorAggregate
                 $parentIndex = array_rand($index);*/
             $parent = $index[$parentIndex];
 
-            $maxDegree = (mt_rand(0, 1000) % 1000 == 0) ? 2 : 1;
-
             // ... and add it to the parent if the parent has not yet at least $maxDegree children, ...
             if($maxDegree == 0 || $parent->getDegree() < $maxDegree)
             {
