@@ -40,7 +40,14 @@ class ServerSocket
     {
         if($handle === null)
         {
-            $handle = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+            $handle = socket_create(AF_INET, SOCK_STREAM, 0);
+
+            socket_set_option($handle, SOL_SOCKET, SO_REUSEADDR, 1);
+
+            $sbuf=socket_get_option($handle, SOL_SOCKET, SO_SNDBUF);
+
+            if($sbuf<(8192*32))
+                socket_set_option($handle, SOL_SOCKET, SO_SNDBUF, 8192*32);
 
             if($handle === FALSE)
                 throw new ServerSocketCreationFailedException($this);
@@ -105,6 +112,7 @@ class ServerSocket
      */
     public function listen()
     {
+        socket_set_nonblock($this->handle);
         return socket_listen($this->handle, 5);
     }
 
@@ -166,7 +174,12 @@ class ServerSocket
         Logger::log(Logger::INFO, 'writing to socket: '.$string);
 
         $string = $string."\n";
-        return socket_write($this->handle, $string, $length === null ? strlen($string) : $length);
+        $result = socket_write($this->handle, $string, $length === null ? strlen($string) : $length);
+        var_dump('$result of write was: '.$result);
+        $err = socket_last_error($this->handle);
+        var_dump('last err = '.$err.' / '.socket_strerror($err));
+
+        return $result;
     }
 
     /**
