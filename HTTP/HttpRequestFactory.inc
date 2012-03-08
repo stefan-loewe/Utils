@@ -7,8 +7,7 @@ namespace Utils\Http;
  *
  * This class acts as Factory for HTTP requests. When given a raw HTTP request, this class creates the appropriate subclass of HttpRequest (@see Utils\Http\HttpRequest).
  */
-class HttpRequestFactory
-{
+class HttpRequestFactory {
     /**
      * keyword to identify a HTTP GET request
      *
@@ -29,8 +28,7 @@ class HttpRequestFactory
      * @param string $rawRequest the raw HTTP request
      * @return boolean true, if the given HTTP request is a HTTP GET request, else false
      */
-    private static function isHttpGetRequest($rawRequest)
-    {
+    private static function isHttpGetRequest($rawRequest) {
         return strpos($rawRequest, self::$GET_TOKEN) === 0;
     }
 
@@ -40,8 +38,7 @@ class HttpRequestFactory
      * @param string $rawRequest the raw HTTP request
      * @return boolean true, if the given HTTP request is a HTTP POST request, else false
      */
-    private static function isHttpPostRequest($rawRequest)
-    {
+    private static function isHttpPostRequest($rawRequest) {
         return strpos($rawRequest, self::$POST_TOKEN) === 0;
     }
 
@@ -51,16 +48,13 @@ class HttpRequestFactory
      * @param string $rawRequest the raw HTTP request
      * @return HttpRequest an instance of HttpGetRequest or HttpPostRequest, based on the given raw request
      */
-    public static function createRequest($rawRequest)
-    {
-        if(self::isHttpGetRequest($rawRequest))
-            return new HttpGetRequest($rawRequest);
-
-        else if(self::isHttpPostRequest($rawRequest))
+    public static function createRequest($rawRequest) {
+        if(self::isHttpPostRequest($rawRequest)) {
             return new HttpPostRequest($rawRequest);
-
-        else
-            throw new \InvalidArgumentException('Could not determine type of (HTTP) request');
-
+        }
+        // if it is not a post request, create a get request
+        else {
+            return new HttpGetRequest($rawRequest);
+        }
     }
 }

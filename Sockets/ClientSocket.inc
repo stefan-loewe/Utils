@@ -2,6 +2,8 @@
 
 namespace Utils\Sockets;
 
+use Utils\Logging\Logger;
+
 /**
  * This class is a wrapper for a client socket, i.e. it can connect to a Server (@see Utils\Sockets\Server) or ServerSocket (@see Utils\Sockets\ServerSocket) and start communicating.
  */
@@ -47,7 +49,7 @@ class ClientSocket
         $this->hostAddress  = $hostAddress;
 
         $this->portNumber   = $portNumber;
-        
+
         $this->timeout      = $timeout;
     }
 
