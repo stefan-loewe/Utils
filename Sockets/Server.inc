@@ -124,7 +124,7 @@ abstract class Server
     /**
      * This method shuts the server down, i.e. it disconnects each connected client, closes the server socket and exits the main loop.
      */
-    protected function shutdown()
+    public function stop()
     {
         $this->isRunning = FALSE;
 
@@ -146,7 +146,7 @@ abstract class Server
     /**
      * This method runs the server, i.e. starts the main loop and waits for clients to connect.
      */
-    public function run()
+    public function start()
     {
         $this->isRunning = TRUE;
 

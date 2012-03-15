@@ -5,8 +5,7 @@ namespace Utils\Http;
 /**
  * This class encapsulates a HTTP GET request.
  */
-class HttpGetRequest extends HttpRequest
-{
+class HttpGetRequest extends HttpRequest {
     /**
      * delimter that identifies, where the parameter string of a HTTP GET request starts
      *
@@ -19,8 +18,7 @@ class HttpGetRequest extends HttpRequest
      *
      * @param string $rawRequest the raw HTTP GET request
      */
-    public function __construct($rawRequest)
-    {
+    public function __construct($rawRequest) {
         parent::__construct($rawRequest);
     }
 
@@ -29,16 +27,19 @@ class HttpGetRequest extends HttpRequest
      *
      * @return string the parameter string from the raw HTTP GET request or null if it was nout found
      */
-    protected function getParamterString()
-    {
+    protected function getParamterString() {
         // get the position of the end of the HTTP header
-        if(($urlParameterStart = strpos($this->rawRequest, self::$URL_PARAMETER_DELIMITER)) !== FALSE)
-        {
+        if(($urlParameterStart = strpos($this->rawRequest, self::$URL_PARAMETER_DELIMITER)) !== FALSE) {
             $start = $urlParameterStart + strlen(self::$URL_PARAMETER_DELIMITER);
 
             $end = strpos($this->rawRequest, ' ', $start);
-
-            return substr($this->rawRequest, $start, $end - $start);
+            
+            if($end === FALSE) {
+                return substr($this->rawRequest, $start);
+            }
+            else {
+                return substr($this->rawRequest, $start, $end - $start);
+            }
         }
 
         else

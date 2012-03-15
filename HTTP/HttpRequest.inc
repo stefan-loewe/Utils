@@ -5,8 +5,7 @@ namespace Utils\Http;
 /**
  * This class is an abstract base class for HTTP requests.
  */
-abstract class HttpRequest
-{
+abstract class HttpRequest {
     /**
      * the raw HTTP request
      *
@@ -19,8 +18,7 @@ abstract class HttpRequest
      *
      * @param string $rawRequest the raw HTTP request
      */
-    public function __construct($rawRequest)
-    {
+    public function __construct($rawRequest) {
         $this->rawRequest = $rawRequest;
     }
 
@@ -32,19 +30,17 @@ abstract class HttpRequest
      * @param string $paramterString the parameter string from the HTTP request
      * @return ArrayObject the parameters of the HTTP request as key-value pairs
      */
-    private function extractKeyValuePairs($paramterString)
-    {
+    private function extractKeyValuePairs($paramterString) {
         $keyValuePairs = new \ArrayObject();
 
-        if($paramterString != null)
-        {
-            foreach(($parameters = explode('&', $paramterString)) as $parameter)
-            {
-                if(strlen($parameter) > 0)
-                {
-                    $keyValue = explode('=', $parameter);
+        if($paramterString != null) {
+            foreach(($parameters = explode('&', $paramterString)) as $parameter) {
+                if(strlen($parameter) > 0) {
+                    $keyValuePair   = explode('=', $parameter);
+                    $key            = $keyValuePair[0];
+                    $value          = isset($keyValuePair[1]) ? $keyValuePair[1] : null;
 
-                    $keyValuePairs[$keyValue[0]] = isset($keyValue[1]) ? $keyValue[1] : null;
+                    $keyValuePairs[$key] = $value;
                 }
             }
         }
@@ -59,8 +55,7 @@ abstract class HttpRequest
      *
      * @return ArrayObject the parameters of the request as key-value pairs
      */
-    public function getKeyValuePairs()
-    {
+    public function getKeyValuePairs() {
         return $this->extractKeyValuePairs($this->getParamterString());
     }
 
@@ -69,8 +64,19 @@ abstract class HttpRequest
      *
      * @return string the raw request of the HTTP request
      */
-    public function getRawRequest()
-    {
+    public function getRawRequest() {
         return $this->rawRequest;
+    }
+
+    /**
+     * This method returns the URI to which the request is pointed.
+     *
+     * @return string the URI to which the request is pointed
+     */
+    public function getUri() {
+        $slashPos       = strpos($this->rawRequest, '/');
+        $httpKeywordPos = strpos($this->rawRequest, 'HTTP');
+
+        return trim(substr($this->rawRequest, $slashPos, $httpKeywordPos - $slashPos));
     }
 }

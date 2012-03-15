@@ -5,8 +5,7 @@ namespace Utils\Logging;
 /**
  * This class acts as a logger which prints to the standard output.
  */
-class Logger
-{
+class Logger {
     /**
      * the identifier for the log level ALL
      */
@@ -42,7 +41,7 @@ class Logger
      *
      * @var int
      */
-    private static $CURRENT_SEVERITY    = 15;
+    private static $CURRENT_SEVERITY    = self::OFF;
 
     /**
      * the target of the logging output
@@ -57,10 +56,10 @@ class Logger
      * @param int $severity the log level of the log message
      * @param string $message the log message
      */
-    public static function log($severity, $message)
-    {
-        if($severity === self::ALL || self::isSevere($severity))
-            file_put_contents(static::$target, PHP_EOL.date('YmdHis').': Logger: '.$message, FILE_APPEND);
+    public static function log($severity, $message) {
+        if($severity === self::ALL || self::isSevere($severity)) {
+            file_put_contents(static::$target, PHP_EOL.date('YmdHis').': Logger: '.$message , FILE_APPEND);
+        }
     }
 
     /**
@@ -68,8 +67,7 @@ class Logger
      *
      * @param int $severity the new severity of the logger
      */
-    public static function setLogLevel($severity)
-    {
+    public static function setLogLevel($severity) {
         self::$CURRENT_SEVERITY = $severity;
     }
 
@@ -79,8 +77,7 @@ class Logger
      * @param int $severity the severity to decide upon
      * @return boolean true, if the passed log level is included in the loggers severity, false if not
      */
-    protected static function isSevere($severity)
-    {
+    protected static function isSevere($severity) {
         return ($severity & static::$CURRENT_SEVERITY) == $severity;
     }
 }

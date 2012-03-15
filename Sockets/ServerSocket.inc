@@ -132,6 +132,7 @@ class ServerSocket {
      * @return string the string read from the socket, or false on error
      */
     public function read($length) {
+        Logger::log(Logger::INFO, 'trying to read from socket '.$this->handle);
         return socket_read($this->handle, $length, PHP_BINARY_READ);
     }
 
@@ -142,6 +143,7 @@ class ServerSocket {
      * @return string the string read from the socket, or false on error
      */
     public function readLine($length) {
+        Logger::log(Logger::INFO, 'trying to read a line from socket '.$this->handle);
         return socket_read($this->handle, $length, PHP_NORMAL_READ);
     }
 
@@ -153,7 +155,7 @@ class ServerSocket {
      * @return int the number of bytes successfully written to the socket or false on failure
      */
     public function write($string, $length = null) {
-        Logger::log(Logger::INFO, 'writing to socket: '.$string);
+        Logger::log(Logger::INFO, 'writing to socket '.$this->handle.': '.$string);
 
         $string = $string."\n";
         return socket_write($this->handle, $string, $length === null ? strlen($string) : $length);
