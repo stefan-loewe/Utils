@@ -84,7 +84,7 @@ abstract class Server
     /**
      * This method decides whether the given resource is the resource of the master socket itself.
      *
-     * @param type $resource the resource to test
+     * @param resource $resource the resource to test
      * @return boolean true, if the given resource is the resource of the master socket, else false
      */
     private function isMasterSocketHandle($resource)
