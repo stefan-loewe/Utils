@@ -445,7 +445,7 @@ class TreeNode implements \IteratorAggregate
      * @return TreeNode
      * @throws UnexpectedValueException if an ancestor of the current node is inserted
      */
-    public function appendChild(self $child)
+    public function appendChild(TreeNode $child)
     {
         // an ancestor of the current node cannot be inserted
         if($child->isAncestorOf($this))
@@ -482,7 +482,7 @@ class TreeNode implements \IteratorAggregate
      * @param TreeNode $child
      * @return void
      */
-    protected function insertChild(self $child)
+    protected function insertChild(TreeNode $child)
     {
         $this->children[] = $child;
     }
@@ -493,7 +493,7 @@ class TreeNode implements \IteratorAggregate
      * @param TreeNode $child
      * @return TreeNode
      */
-    public function removeChild(self $child)
+    public function removeChild(TreeNode $child)
     {
         $child->parent = null;
 
