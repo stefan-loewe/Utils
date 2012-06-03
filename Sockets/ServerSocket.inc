@@ -132,7 +132,7 @@ class ServerSocket {
      * @return string the string read from the socket, or false on error
      */
     public function read($length) {
-        Logger::log(Logger::INFO, 'trying to read from socket '.$this->handle);
+        Logger::log(Logger::INFO, 'trying to read from sOcket '.$this->handle);
         return socket_read($this->handle, $length, PHP_BINARY_READ);
     }
 
@@ -181,9 +181,9 @@ class ServerSocket {
         socket_set_option($this->handle, SOL_SOCKET, SO_LINGER, array('l_onoff' => 1, 'l_linger' => 1));
 
         // see http://www.php.net/manual/en/function.socket-shutdown.php#91021 for next two lines
-        $result = socket_shutdown($this->handle, self::$SHUTDOWN_WRITING_SOCKETS);
-
-        $result = socket_shutdown($this->handle, self::$SHUTDOWN_READING_SOCKETS);
+        //$result = socket_shutdown($this->handle, self::$SHUTDOWN_WRITING_SOCKETS);
+//usleep(500);//wait remote host
+        //$result = socket_shutdown($this->handle, self::$SHUTDOWN_READING_SOCKETS);
 
         socket_close($this->handle);
     }
