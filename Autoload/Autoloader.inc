@@ -48,7 +48,7 @@ class Autoloader
         }
         catch(SourceFileNotFoundException $sfnfe)
         {
-            var_dump($sfnfe->getMessage());
+            //var_dump($sfnfe->getMessage());
         }
     }
 
