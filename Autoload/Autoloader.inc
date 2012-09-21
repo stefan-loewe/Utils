@@ -20,13 +20,21 @@ class Autoloader
     private $baseDirectory = null;
 
     /**
+     * the extension of the source files to include
+     *
+     * @var string
+     */
+    private $extension = null;
+
+    /**
      * This method acts as the constructor of the class.
      *
      * @param string $baseDirectory the base directory from where to start looking for source files
      */
-    public function __construct($baseDirectory)
+    public function __construct($baseDirectory, $extension = 'inc')
     {
-        $this->baseDirectory = str_replace('\\', '/', $baseDirectory);
+        $this->baseDirectory  = str_replace('\\', '/', $baseDirectory);
+        $this->extension      = $extension;
     }
 
     /**
@@ -60,6 +68,6 @@ class Autoloader
      */
     private function getFileName($className)
     {
-        return $this->baseDirectory.str_replace('\\', '/', $className).'.inc';
+        return $this->baseDirectory.str_replace('\\', '/', $className).'.'.$this->extension;
     }
 }
