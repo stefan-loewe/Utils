@@ -1,12 +1,12 @@
 <?php
 
-namespace Utils\Graphics2D\DrawingPanes;
+namespace ws\loewe\Utils\Graphics2D\DrawingPanes;
 
-use Utils\Color\Color;
-use Utils\Color\RgbColor;
+use \ws\loewe\Utils\Color\Color;
+use \ws\loewe\Utils\Color\RgbColor;
 
-use Utils\Geom\Dimension;
-use Utils\Geom\Point;
+use \ws\loewe\Utils\Geom\Dimension;
+use \ws\loewe\Utils\Geom\Point;
 
 /**
  * This class implements a drawing pane for the HTML canvas element.

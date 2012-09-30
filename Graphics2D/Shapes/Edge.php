@@ -1,10 +1,10 @@
 <?php
 
-namespace Utils\Graphics2D\Shapes;
+namespace ws\loewe\Utils\Graphics2D\Shapes;
 
-use Utils\Geom\Point;
-use Utils\Graphics2D\Shapes\Styles\ShapeStyle;
-use Utils\Graphics2D\Shapes\Styles\EdgeStyle;
+use \ws\loewe\Utils\Geom\Point;
+use \ws\loewe\Utils\Graphics2D\Shapes\Styles\ShapeStyle;
+use \ws\loewe\Utils\Graphics2D\Shapes\Styles\EdgeStyle;
 
 /**
  * This class represents an abstract edge shape.

@@ -1,10 +1,10 @@
 <?php
 
-namespace Utils\Font\FontMetricServices;
+namespace ws\loewe\Utils\Font\FontMetricServices;
 
-use Utils\Font\FontManager;
-use Utils\Graphics2D\Shapes\Styles\TextStyle;
-use Utils\URL\Url;
+use \ws\loewe\Utils\Font\FontManager;
+use \ws\loewe\Utils\Graphics2D\Shapes\Styles\TextStyle;
+use \ws\loewe\Utils\URL\Url;
 
 /**
  * This font metric service can create font metrics when being invoked directly through the browser.

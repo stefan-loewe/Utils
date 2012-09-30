@@ -1,12 +1,12 @@
 <?php
 
-namespace Utils\Graphics2D\Shapes;
+namespace ws\loewe\Utils\Graphics2D\Shapes;
 
-use Utils\Geom\Point;
-use Utils\Geom\Dimension;
-use Utils\Graphics2D\Shapes\Styles\ShapeStyle;
-use Utils\Graphics2D\Shapes\Styles\EdgeStyle;
-use Utils\Graphics2D\DrawingPanes\DrawingPane;
+use \ws\loewe\Utils\Geom\Point;
+use \ws\loewe\Utils\Geom\Dimension;
+use \ws\loewe\Utils\Graphics2D\Shapes\Styles\ShapeStyle;
+use \ws\loewe\Utils\Graphics2D\Shapes\Styles\EdgeStyle;
+use \ws\loewe\Utils\Graphics2D\DrawingPanes\DrawingPane;
 
 /**
  * This class represents a poly-edge shape.

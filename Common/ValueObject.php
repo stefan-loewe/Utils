@@ -1,6 +1,6 @@
 <?php
 
-namespace Utils\Common;
+namespace ws\loewe\Utils\Common;
 
 trait ValueObject {
     public function __get($memberName) {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Utils\Graphics2D\Shapes\Styles;
+namespace ws\loewe\Utils\Graphics2D\Shapes\Styles;
 
-use Utils\Color\Color;
-use Utils\Color\RgbColor;
+use \ws\loewe\Utils\Color\Color;
+use \ws\loewe\Utils\Color\RgbColor;
 
 /**
  * This class implements an abstract style for lines.

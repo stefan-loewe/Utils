@@ -1,6 +1,6 @@
 <?php
 
-namespace Utils\Tree;
+namespace ws\loewe\Utils\Tree;
 
 /**
  * This class encapsulates a node in a tree.

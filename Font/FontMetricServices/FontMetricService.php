@@ -1,11 +1,11 @@
 <?php
 
-namespace Utils\Font\FontMetricServices;
+namespace ws\loewe\Utils\Font\FontMetricServices;
 
-use Utils\Font\FontManager;
-use Utils\Graphics2D\Shapes\Styles\TextStyle;
-use Utils\File\Directory;
-use \Utils\URL\Url;
+use \ws\loewe\Utils\Font\FontManager;
+use \ws\loewe\Utils\Graphics2D\Shapes\Styles\TextStyle;
+use \ws\loewe\Utils\File\Directory;
+use \ws\loewe\Utils\URL\Url;
 
 /**
  * This class represents an abstract front metric service.

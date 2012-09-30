@@ -1,6 +1,6 @@
 <?php
 
-namespace Utils\Geom;
+namespace ws\loewe\Utils\Geom;
 
 /**
  * This class encapsulates the width and height of an object in the two-dimensional space, e.g. a rectangle or an ellipse.

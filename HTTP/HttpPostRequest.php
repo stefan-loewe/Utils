@@ -1,6 +1,6 @@
 <?php
 
-namespace Utils\Http;
+namespace ws\loewe\Utils\Http;
 
 /**
  * This class encapsulates a HTTP POST request.

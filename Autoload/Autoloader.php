@@ -1,6 +1,6 @@
 <?php
 
-namespace Utils\Autoload;
+namespace ws\loewe\Utils\Autoload;
 
 /**
 * exceptions thrown during autoload need to be linked statically

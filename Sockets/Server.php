@@ -1,11 +1,11 @@
 <?php
 
-namespace Utils\Sockets;
+namespace ws\loewe\Utils\Sockets;
 
-use Utils\Logging\Logger;
+use \ws\loewe\Utils\Logging\Logger;
 
 /**
- * This class can be used to build a custom socket server. It wraps a ServerSocket {@see Utils\Sockets\ServerSocket), which is being opened for connecting and allows for communication with that ServerSocket. The subclass only has to implement the abstract method <code>Server::processClient(ServerSocket $clientSocket)</code>, then <code>__contruct()</code> and <code>run()</code> the server, waiting for connections.
+ * This class can be used to build a custom socket server. It wraps a ServerSocket {@see ws\loewe\Utils\Sockets\ServerSocket), which is being opened for connecting and allows for communication with that ServerSocket. The subclass only has to implement the abstract method <code>Server::processClient(ServerSocket $clientSocket)</code>, then <code>__contruct()</code> and <code>run()</code> the server, waiting for connections.
  */
 abstract class Server
 {

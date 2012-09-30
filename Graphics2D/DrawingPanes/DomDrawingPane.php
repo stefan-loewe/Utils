@@ -1,9 +1,9 @@
 <?php
 
-namespace Utils\Graphics2D\DrawingPanes;
+namespace ws\loewe\Utils\Graphics2D\DrawingPanes;
 
-use Utils\Color\RgbColor;
-use Utils\Geom\Dimension;
+use \ws\loewe\Utils\Color\RgbColor;
+use \ws\loewe\Utils\Geom\Dimension;
 
 /**
  * This class implements an abstract drawing pane for DOM output.

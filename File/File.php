@@ -1,6 +1,6 @@
 <?php
 
-namespace Utils\File;
+namespace ws\loewe\Utils\File;
 
 /**
  * This class represents a file in the file system.

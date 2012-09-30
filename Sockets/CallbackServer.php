@@ -1,10 +1,10 @@
 <?php
 
-namespace Utils\Sockets;
+namespace ws\loewe\Utils\Sockets;
 
-use Utils\Logging\Logger;
-use Utils\Http\HttpRequestFactory;
-use Utils\Http\HttpRequest;
+use \ws\loewe\Utils\Logging\Logger;
+use \ws\loewe\Utils\Http\HttpRequestFactory;
+use \ws\loewe\Utils\Http\HttpRequest;
 
 /**
  * This class acts as pattern for implementing a simple callback server.

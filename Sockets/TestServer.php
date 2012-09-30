@@ -1,11 +1,11 @@
 <?php
 
-namespace Utils\Sockets;
+namespace ws\loewe\Utils\Sockets;
 
-use Utils\Logging\Logger;
+use \ws\loewe\Utils\Logging\Logger;
 
 /**
- * This class is an implementation of the abstract Server (@see Utils\Sockets\Server) solely for testing purposes.
+ * This class is an implementation of the abstract Server (@see ws\loewe\Utils\Sockets\Server) solely for testing purposes.
  */
 class TestServer extends Server
 {

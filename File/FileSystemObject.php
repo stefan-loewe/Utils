@@ -1,6 +1,6 @@
 <?php
 
-namespace Utils\File;
+namespace ws\loewe\Utils\File;
 
 /**
  * This class represents an abstract object in the file system.

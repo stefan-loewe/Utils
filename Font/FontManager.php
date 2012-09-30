@@ -1,10 +1,10 @@
 <?php
 
-namespace Utils\Font;
+namespace ws\loewe\Utils\Font;
 
-use Utils\Graphics2D\Shapes\Styles\TextStyle;
-use Utils\Font\FontMetric;
-use Utils\Font\FontMetricServices\FontMetricService;
+use \ws\loewe\Utils\Graphics2D\Shapes\Styles\TextStyle;
+use \ws\loewe\Utils\Font\FontMetric;
+use \ws\loewe\Utils\Font\FontMetricServices\FontMetricService;
 
 /**
  * This class is responsible for managing font metrics.

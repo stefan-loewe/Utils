@@ -1,10 +1,10 @@
 <?php
 
-namespace Utils\Graphics2D\Shapes;
+namespace ws\loewe\Utils\Graphics2D\Shapes;
 
-use Utils\Graphics2D\Shapes\Styles\TextStyle;
-use Utils\Graphics2D\DrawingPanes\DrawingPane;
-use Utils\Geom\Point;
+use \ws\loewe\Utils\Graphics2D\Shapes\Styles\TextStyle;
+use \ws\loewe\Utils\Graphics2D\DrawingPanes\DrawingPane;
+use \ws\loewe\Utils\Geom\Point;
 
 /**
  * This class represents a text shape.

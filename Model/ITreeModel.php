@@ -1,6 +1,6 @@
 <?php
 
-namespace Utils\Model;
+namespace ws\loewe\Utils\Model;
 
 /**
  * This interface defines the basic methods that are neccessary for a data structure to be processed by the Reingold-Tilford tree drawing algorithm.

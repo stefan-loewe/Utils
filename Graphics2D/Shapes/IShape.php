@@ -1,6 +1,6 @@
 <?php
 
-namespace Utils\Graphics2D\Shapes;
+namespace ws\loewe\Utils\Graphics2D\Shapes;
 
 /**
  * This interface defines a type for generic shapes.

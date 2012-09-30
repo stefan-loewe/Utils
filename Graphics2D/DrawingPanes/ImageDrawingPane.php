@@ -1,8 +1,8 @@
 <?php
 
-namespace Utils\Graphics2D\DrawingPanes;
+namespace ws\loewe\Utils\Graphics2D\DrawingPanes;
 
-use Utils\Geom\Dimension;
+use \ws\loewe\Utils\Geom\Dimension;
 
 /**
  * This class implements an abstract drawing pane for binary image output.

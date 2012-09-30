@@ -1,6 +1,6 @@
 <?php
 
-namespace Utils\URL;
+namespace ws\loewe\Utils\URL;
 
 /**
  * This class is a simple wrapper for an URL.

@@ -1,10 +1,10 @@
 <?php
 
-namespace Utils\Graphics2D\Shapes;
+namespace ws\loewe\Utils\Graphics2D\Shapes;
 
-use Utils\Geom\Point;
-use Utils\Geom\Dimension;
-use Utils\Graphics2D\Shapes\Styles\ShapeStyle;
+use \ws\loewe\Utils\Geom\Point;
+use \ws\loewe\Utils\Geom\Dimension;
+use \ws\loewe\Utils\Graphics2D\Shapes\Styles\ShapeStyle;
 
 /**
  * This class acts as factory for graphical shape elements.

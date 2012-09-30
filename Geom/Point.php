@@ -1,6 +1,6 @@
 <?php
 
-namespace Utils\Geom;
+namespace ws\loewe\Utils\Geom;
 
 /**
  * This class represents a point in the two-dimensional space.
@@ -50,7 +50,7 @@ class Point
      * This method sets the x-coordinate of the point.
      *
      * @param int $x the new x-coordinate of the point
-     * @return \Utils\Geom\Point this point
+     * @return \ws\loewe\Utils\Geom\Point this point
      */
     public function setX($x)
     {
@@ -61,7 +61,7 @@ class Point
      * This method sets the y-coordinate of the point.
      *
      * @param int $y the new y-coordinate of the point
-     * @return \Utils\Geom\Point this point
+     * @return \ws\loewe\Utils\Geom\Point this point
      */
     public function setY($y)
     {
@@ -71,8 +71,8 @@ class Point
     /**
      * This method moves a point by an offset, given as dimension.
      *
-     * @param \Utils\Geom\Dimension $dimension the dimension by which this point shall be moved by
-     * @return \Utils\Geom\Point a new point moved by the offset encapsulated by the given point
+     * @param \ws\loewe\Utils\Geom\Dimension $dimension the dimension by which this point shall be moved by
+     * @return \ws\loewe\Utils\Geom\Point a new point moved by the offset encapsulated by the given point
      */
     public function moveBy(Dimension $dimension)
     {
@@ -82,8 +82,8 @@ class Point
     /**
      * This method moves a point to another point, given as another point.
      *
-     * @param \Utils\Geom\Point $point the point by which this point shall be moved by
-     * @return \Utils\Geom\Point a new point moved by the offset encapsulated by the given point
+     * @param \ws\loewe\Utils\Geom\Point $point the point by which this point shall be moved by
+     * @return \ws\loewe\Utils\Geom\Point a new point moved by the offset encapsulated by the given point
      */
     public function moveTo(Point $point)
     {

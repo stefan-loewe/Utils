@@ -1,6 +1,6 @@
 <?php
 
-namespace Utils\Logging;
+namespace ws\loewe\Utils\Logging;
 
 /**
  * This class acts as a logger which prints to a file.

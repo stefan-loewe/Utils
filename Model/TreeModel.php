@@ -1,6 +1,6 @@
 <?php
 
-namespace Utils\Model;
+namespace ws\loewe\Utils\Model;
 
 /**
  * This class acts as an abstract ITreeModel implementation, implementing the most basic elements.

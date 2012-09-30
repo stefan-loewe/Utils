@@ -1,6 +1,6 @@
 <?php
 
-namespace Utils\File;
+namespace ws\loewe\Utils\File;
 
 /**
  * This class represents a directory in the file system. It contains a collection of children referencing files and other directories.

@@ -1,6 +1,6 @@
 <?php
 
-namespace Utils\Autoload;
+namespace ws\loewe\Utils\Autoload;
 
 /**
  * This class represents an exception, which is thrown when the autoloader is unable to locate a source file that holds the definition of a class or interface.

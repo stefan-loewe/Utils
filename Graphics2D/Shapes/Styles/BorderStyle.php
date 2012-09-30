@@ -1,8 +1,8 @@
 <?php
 
-namespace Utils\Graphics2D\Shapes\Styles;
+namespace ws\loewe\Utils\Graphics2D\Shapes\Styles;
 
-use Utils\Color\Color;
+use \ws\loewe\Utils\Color\Color;
 
 /**
  * This class implements a style for borders.

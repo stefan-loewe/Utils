@@ -1,6 +1,6 @@
 <?php
 
-namespace Utils\Color;
+namespace ws\loewe\Utils\Color;
 
 /**
  * This class encapsulates an RGB color.

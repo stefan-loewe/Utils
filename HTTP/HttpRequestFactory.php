@@ -1,11 +1,11 @@
 <?php
 
-namespace Utils\Http;
+namespace ws\loewe\Utils\Http;
 
 /**
  * This class acts as Factory for HTTP requests.
  *
- * This class acts as Factory for HTTP requests. When given a raw HTTP request, this class creates the appropriate subclass of HttpRequest (@see Utils\Http\HttpRequest).
+ * This class acts as Factory for HTTP requests. When given a raw HTTP request, this class creates the appropriate subclass of HttpRequest (@see ws\loewe\Utils\Http\HttpRequest).
  */
 class HttpRequestFactory {
     /**

@@ -1,8 +1,8 @@
 <?php
 
-namespace Utils\Font\FontMetricServices;
+namespace ws\loewe\Utils\Font\FontMetricServices;
 
-use Utils\URL\Url;
+use \ws\loewe\Utils\URL\Url;
 
 /**
  * This class acts as factory for creating font metric services.

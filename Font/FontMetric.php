@@ -1,8 +1,8 @@
 <?php
 
-namespace Utils\Font;
+namespace ws\loewe\Utils\Font;
 
-use Utils\Graphics2D\Shapes\Styles\TextStyle;
+use \ws\loewe\Utils\Graphics2D\Shapes\Styles\TextStyle;
 
 /**
  * This class encapsulates font metrics, i.e. for a given font family and font size given as text stlye, it can calculate the width and height of a string or a collection of strings.

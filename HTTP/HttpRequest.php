@@ -1,6 +1,6 @@
 <?php
 
-namespace Utils\Http;
+namespace ws\loewe\Utils\Http;
 
 /**
  * This class is an abstract base class for HTTP requests.

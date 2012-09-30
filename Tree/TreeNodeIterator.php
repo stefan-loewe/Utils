@@ -1,6 +1,6 @@
 <?php
 
-namespace Utils\Tree;
+namespace ws\loewe\Utils\Tree;
 
 /**
  * This class implements an iterator to visit the children of a tree node (@see \Lib\TreeNode)

@@ -1,9 +1,9 @@
 <?php
 
-namespace Utils\Graphics2D\Shapes;
+namespace ws\loewe\Utils\Graphics2D\Shapes;
 
-use Utils\Graphics2D\Shapes\Styles\IStyle;
-use Utils\Graphics2D\DrawingPanes\DrawingPane;
+use \ws\loewe\Utils\Graphics2D\Shapes\Styles\IStyle;
+use \ws\loewe\Utils\Graphics2D\DrawingPanes\DrawingPane;
 
 /**
  * This class represents an abstract shape.

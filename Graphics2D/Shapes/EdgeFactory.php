@@ -1,9 +1,9 @@
 <?php
 
-namespace Utils\Graphics2D\Shapes;
+namespace ws\loewe\Utils\Graphics2D\Shapes;
 
-use Utils\Geom\Point;
-use Utils\Graphics2D\Shapes\Styles\EdgeStyle;
+use \ws\loewe\Utils\Geom\Point;
+use \ws\loewe\Utils\Graphics2D\Shapes\Styles\EdgeStyle;
 
 /**
  * This class acts as factory for graphical edge elements.

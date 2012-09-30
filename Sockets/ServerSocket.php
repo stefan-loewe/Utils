@@ -1,11 +1,11 @@
 <?php
 
-namespace Utils\Sockets;
+namespace ws\loewe\Utils\Sockets;
 
-use Utils\Logging\Logger;
+use \ws\loewe\Utils\Logging\Logger;
 
 /**
- * This class is a wrapper for a server socket, i.e. a client (@see Utils\Sockets\ClientSocket) can connect to, and communication with.
+ * This class is a wrapper for a server socket, i.e. a client (@see ws\loewe\Utils\Sockets\ClientSocket) can connect to, and communication with.
  */
 class ServerSocket {
     /**

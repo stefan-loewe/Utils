@@ -1,5 +1,5 @@
 <?php
-namespace Utils\DataStructures;
+namespace ws\loewe\Utils\DataStructures;
 
 
 class RingBuffer {
