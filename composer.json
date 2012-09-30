@@ -1,6 +1,6 @@
 {
     "name": "ws/loewe/Utils",
     "autoload": {
-        "psr-0": { "ws/loewe/Utils": "src/" }
+        "psr-0": { "ws\loewe\Utils": "src/" }
     }
 }
