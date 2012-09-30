@@ -5,7 +5,7 @@ namespace ws\loewe\Utils\Autoload;
 /**
 * exceptions thrown during autoload need to be linked statically
 */
-require_once 'SourceFileNotFoundException.inc';
+require_once 'SourceFileNotFoundException.php';
 
 /**
  * This class acts as a just-in-time autoloader for class files. Given a base directory, class files are looked up by mapping the classes namespace to a folder, and the class name to a file name in that particular folder.
