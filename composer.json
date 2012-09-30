@@ -1,7 +1,8 @@
 {
     "name": "ws/loewe/Utils",
     "autoload": {
-        "psr-0": { "ws\\loewe\\Utils": "src/" }
-    },
-    "target-dir": "ws/loewe/Utils"
+        "psr-0": {
+            "ws\\loewe\\Utils\\": "src/"
+        }
+    }
 }
