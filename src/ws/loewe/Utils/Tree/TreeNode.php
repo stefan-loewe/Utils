@@ -574,12 +574,8 @@ class TreeNode implements \IteratorAggregate
         else
         {
             $node[$this->id] = array('data' => $this->data);
-            foreach(new \RecursiveIteratorIterator($this->getRecursiveIterator(), \RecursiveIteratorIterator::SELF_FIRST) as $child)
-            {
-                $node[] = array(
-                                    'data'        => $child->data,
-                                    'parent'    => $child->id
-                                );
+            foreach(new \RecursiveIteratorIterator($this->getRecursiveIterator(), \RecursiveIteratorIterator::SELF_FIRST) as $child) {
+                $node[] = array('data' => $child->data);
             }
         }
         return $node;
