@@ -297,7 +297,7 @@ class TreeNode implements \IteratorAggregate
 
             // if not, raise a runtime exception (this should never happen unless appendChild or removeChild are erroneous)
             else
-                throw new \RuntimeException('There is no child set at the index "'.$index.'" of node "'.$this->id.'"!');
+                throw new \RuntimeException('There is no child set at the index "'.$index.'" of node "'.$this->data.'"!');
         }
         else
             throw new \OutOfBoundsException('The index "'.$index.'" is out of bounds!');
@@ -336,7 +336,7 @@ class TreeNode implements \IteratorAggregate
         }
 
         if($index == -1)
-            throw new \UnexpectedValueException('The passed node is not a child "'.$child->id.'" of the current node!');
+            throw new \UnexpectedValueException('The passed node is not a child "'.$child->data.'" of the current node!');
 
         return $index;
     }
@@ -573,7 +573,7 @@ class TreeNode implements \IteratorAggregate
         // ... or build a flat array
         else
         {
-            $node[$this->id] = array('data' => $this->data);
+            $node[] = array('data' => $this->data);
             foreach(new \RecursiveIteratorIterator($this->getRecursiveIterator(), \RecursiveIteratorIterator::SELF_FIRST) as $child) {
                 $node[] = array('data' => $child->data);
             }
@@ -598,7 +598,6 @@ class TreeNode implements \IteratorAggregate
      */
     public function __toString()
     {
-        //return 'level '.$this->depth.': id = '.$this->id.($this->parent === null ? ' [ROOT]' : ' [parent = '.$this->parent->id.']');
         return 'level '.$this->depth.': data = '.$this->data;
     }
 
@@ -610,7 +609,7 @@ class TreeNode implements \IteratorAggregate
     public function toStringRec()
     {
         $result = '<node>'."\n";
-        $result = $result.'<id>'.$this->data.'</id>'."\n";
+        $result = $result.'<data>'.$this->data.'</data>'."\n";
         foreach($this->children as $child)
             $result = $result.$child->toStringRec();
         $result = $result.'</node>'."\n";
