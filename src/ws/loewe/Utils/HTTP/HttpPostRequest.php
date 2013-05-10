@@ -24,11 +24,6 @@ class HttpPostRequest extends HttpRequest
         parent::__construct($rawRequest);
     }
 
-    /**
-     * This method extracts and returns the parameter string from the raw HTTP POST request.
-     *
-     * @return string the parameter string from the raw HTTP POST request or null if it was nout found
-     */
     protected function getParamterString()
     {
         // get the position of the end of the HTTP header

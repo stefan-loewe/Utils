@@ -112,9 +112,6 @@ class HtmlMapDrawingPane extends DomDrawingPane
         return $this;
     }
 
-    /**
-     *
-     */
     public function save()
     {
         $this->document->appendChild($mapElement = $this->document->createElement('map'));

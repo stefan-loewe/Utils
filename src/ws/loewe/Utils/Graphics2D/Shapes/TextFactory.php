@@ -5,7 +5,7 @@ namespace ws\loewe\Utils\Graphics2D\Shapes;
 use \ws\loewe\Utils\Graphics2D\Shapes\Text;
 use \ws\loewe\Utils\Graphics2D\Shapes\Styles\TextStyle;
 use \ws\loewe\Utils\Geom\Point;
-use ReingoldTilford\Models\ITreeModel;
+use \ws\loewe\ReingoldTilford\Models\ITreeModel;
 
 /**
  * This class acts as factory for graphical text elements.

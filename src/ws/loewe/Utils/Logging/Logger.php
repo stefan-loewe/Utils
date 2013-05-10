@@ -41,7 +41,7 @@ class Logger {
      *
      * @var int
      */
-    private static $CURRENT_SEVERITY    = self::OFF;
+    protected static $CURRENT_SEVERITY    = self::OFF;
 
     /**
      * the target of the logging output

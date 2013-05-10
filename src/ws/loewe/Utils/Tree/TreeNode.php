@@ -56,9 +56,10 @@ class TreeNode implements \IteratorAggregate
     public function populateRandomly($size = 100, $maxDegree = 0)
     {
         // maxDegree must be greater or equal to 0
-        $maxDegree    = max(0, $maxDegree);
+        $maxDegree  = max(0, $maxDegree);
 
         // add the root to the index ...
+        $index      = array();
         $index[]    = $this;
 
         // ... and add children iteratively in a random way
@@ -297,12 +298,10 @@ class TreeNode implements \IteratorAggregate
 
             // if not, raise a runtime exception (this should never happen unless appendChild or removeChild are erroneous)
             else
-                throw new \RuntimeException('There is no child set at the index "'.$index.'" of node "'.$this->id.'"!');
+                throw new \RuntimeException('There is no child set at the index "'.$index.'" of node "'.$this.'"!');
         }
         else
             throw new \OutOfBoundsException('The index "'.$index.'" is out of bounds!');
-
-        return null;
     }
 
     /**

@@ -23,6 +23,13 @@ abstract class HttpRequest {
     }
 
     /**
+     * This method extracts and returns the parameter string from the raw HTTP request.
+     *
+     * @return string the parameter string from the raw HTTP request or null if it was nout found
+     */
+    abstract protected function getParamterString();
+
+    /**
      * This mehtod extracts the key-value pairs of a HTTP request.
      *
      * The name of a parameter is a key of the ArrayObject and points to its according value.
