@@ -9,8 +9,7 @@ use \ws\loewe\Utils\Font\FontMetricServices\FontMetricService;
 /**
  * This class is responsible for managing font metrics.
  */
-class FontManager
-{
+class FontManager {
     /**
      * the collection containing the FontMetrics
      *
@@ -37,11 +36,14 @@ class FontManager
      *
      * @param FontMetricService $fontMetricService the FontMetricService to use
      */
-    public function __construct(FontMetricService $fontMetricService = null)
-    {
+    public function __construct(FontMetricService $fontMetricService = null, $fontMetricsFileName = null) {
         $this->initializeFontMetrics();
 
-        $this->fontMetricService = $fontMetricService;
+        $this->fontMetricService    = $fontMetricService;
+
+        if($fontMetricsFileName != null) {
+          $this->fontMetricsFileName  = $fontMetricsFileName;
+        }
     }
 
     /**
@@ -49,16 +51,12 @@ class FontManager
      *
      * @return boolean true, if a cache for FontMetrics was found, else false
      */
-    private function initializeFontMetrics()
-    {
+    private function initializeFontMetrics() {
         $this->fontMetrics = new \ArrayObject();
 
         $filename = $this->getFontMetricsPath();
-
-        if(file_exists($filename))
-        {
+        if(file_exists($filename)) {
             $this->fontMetrics = unserialize(file_get_contents($filename));
-
             return true;
         }
 
@@ -70,10 +68,10 @@ class FontManager
      *
      * @param TextStyle $textStyle the TextStyle for which a FontMetric has to be created
      */
-    private function createFontMetric(TextStyle $textStyle)
-    {
-        if(!$this->fontMetrics->offsetExists($textStyle->getHash()))
+    private function createFontMetric(TextStyle $textStyle) {
+        if(!$this->fontMetrics->offsetExists($textStyle->getHash())) {
             $this->fontMetricService->execute($textStyle, $this);
+        }
     }
 
     /**
@@ -81,8 +79,7 @@ class FontManager
      *
      * @return string the full path to the FontMetrics cache file
      */
-    private function getFontMetricsPath()
-    {
+    private function getFontMetricsPath() {
         return $this->fontMetricsFileName;
     }
 
@@ -91,8 +88,7 @@ class FontManager
      *
      * @param FontMetric $metric the FontMetric to be added
      */
-    public function addFontMetric(FontMetric $metric)
-    {
+    public function addFontMetric(FontMetric $metric) {
         $this->fontMetrics[$metric->getHash()] = $metric;
 
         file_put_contents($this->getFontMetricsPath(), serialize($this->fontMetrics));
@@ -106,22 +102,21 @@ class FontManager
      * @param TextStyle $textStyle the TextStyle whose FontMetric has to be retrieved
      * @return FontMetric the FontMetric for the given TextStyle
      */
-    public function getFontMetric(TextStyle $textStyle)
-    {
+    public function getFontMetric(TextStyle $textStyle) {
         $hash = $textStyle->getHash();
 
-        if(!$this->fontMetrics->offsetExists($hash))
-        {
+        if(!$this->fontMetrics->offsetExists($hash)) {
             $this->createFontMetric($textStyle);
 
             // when creating font metrics via web interface, they might not be ready
             // yet, so wait for a bit
-            for($i = 0; $i < 1000; $i++)
-            {
-                if($this->initializeFontMetrics())
+            for($i = 0; $i < 1000; $i++) {
+                if($this->initializeFontMetrics()) {
                     break;
-                else
+                }
+                else {
                     usleep(1000);
+                }
             }
             sleep(3);
         }
