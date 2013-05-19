@@ -298,11 +298,7 @@ class TreeNode implements \IteratorAggregate
 
             // if not, raise a runtime exception (this should never happen unless appendChild or removeChild are erroneous)
             else
-<<<<<<< HEAD
-                throw new \RuntimeException('There is no child set at the index "'.$index.'" of node "'.$this.'"!');
-=======
                 throw new \RuntimeException('There is no child set at the index "'.$index.'" of node "'.$this->data.'"!');
->>>>>>> 6ebc2c467cbfdb45da3170c795379932b82317f5
         }
         else
             throw new \OutOfBoundsException('The index "'.$index.'" is out of bounds!');
