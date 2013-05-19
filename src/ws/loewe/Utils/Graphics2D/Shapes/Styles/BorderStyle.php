@@ -17,6 +17,6 @@ class BorderStyle extends LineStyle
      */
     public function __construct($width = 1, Color $color = null)
     {
-        parent::__construct($width, null);
+        parent::__construct($width, $color);
     }
 }

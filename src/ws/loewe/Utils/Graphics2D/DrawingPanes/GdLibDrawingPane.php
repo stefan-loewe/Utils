@@ -3,7 +3,6 @@
 namespace ws\loewe\Utils\Graphics2D\DrawingPanes;
 
 use \ws\loewe\Utils\Color\Color;
-use \ws\loewe\Utils\Color\RgbColor;
 
 use \ws\loewe\Utils\Geom\Dimension;
 use \ws\loewe\Utils\Geom\Point;

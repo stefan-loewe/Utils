@@ -47,6 +47,6 @@ class AdvancedFontMetricSocketService extends FontMetricSocketService
 
         $server = new CallbackServer($this->url->getHost(), $this->url->getPort(), null);
 
-        $server->register($callback)->run();
+        $server->register($callback)->start();
     }
 }

@@ -11,7 +11,7 @@ use \ws\loewe\Utils\Http\HttpRequest;
  *
  * This class acts as pattern for implementing a simple callback server, i.e. callback can be registered, which then get the received requests as input. The callbacks are executed in the order as defined by the type of collection used for storing the callbacks. It is the responsibility of the callbacks to do something meaningful.
  */
-abstract class CallbackServer extends Server
+class CallbackServer extends Server
 {
     /**
      * collection of closures that are registered with the CallbackServer
@@ -30,6 +30,8 @@ abstract class CallbackServer extends Server
     public function __construct($address, $port, $timeout)
     {
         parent::__construct($address, $port, $timeout);
+        
+        $this->callbacks = new \SplObjectStorage();
     }
 
     /**
@@ -61,5 +63,17 @@ abstract class CallbackServer extends Server
             if(($this->isRunning = $currentCallback->__invoke($request)))
                 break;
         }
+    }
+    
+    /**
+     * This method registers the given callback with the server.
+     * 
+     * @param \Closure $callback the callback to register
+     * @return CallbackServer this
+     */
+    public function register(\Closure $callback) {
+      $this->callbacks->attach($callback);
+
+      return $this;
     }
 }

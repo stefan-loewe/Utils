@@ -2,9 +2,6 @@
 
 namespace ws\loewe\Utils\Graphics2D\DrawingPanes;
 
-use \ws\loewe\Utils\Color\Color;
-use \ws\loewe\Utils\Color\RgbColor;
-
 use \ws\loewe\Utils\Geom\Dimension;
 use \ws\loewe\Utils\Geom\Point;
 
@@ -51,7 +48,7 @@ class SvgDrawingPane extends DomDrawingPane
         $this->fragment->appendXML('<polyline'
             .' points="'.$this->pointsToString($points).'"'
             .' style="fill:none;'
-                .' stroke:'.$this->toDOMColor($this->strokeColor).';'
+                .' stroke:'.$this->strokeColor->toDomColor().';'
                 .' stroke-width:'.$this->strokeWidth.';"'
             .'/>');
 
@@ -123,7 +120,7 @@ class SvgDrawingPane extends DomDrawingPane
         $this->fragment->appendXML('<text x="'.$x.'"'
                                         .' y="'.$y.'"'
                                         .' style="font-family:'.$this->fontFamily.'; font-size:'.$this->fontSize.'px;"'
-                                        .' fill="'.$this->toDOMColor($this->fontColor).'">'
+                                        .' fill="'.$this->fontColor->toDomColor().'">'
                                             .$lines
                                     .' </text>');
 
@@ -210,10 +207,10 @@ class SvgDrawingPane extends DomDrawingPane
         $strokeWidth = ($this->strokeWidth >= 0) ? $this->strokeWidth : 0;
         $style .= 'stroke-width:'.$strokeWidth.'px;';
 
-        $strokeColor = ($this->strokeColor != null) ? $this->toDOMColor($this->strokeColor) : 'none';
+        $strokeColor = ($this->strokeColor != null) ? $this->strokeColor->toDomColor() : 'none';
         $style .= 'stroke:'.$strokeColor.';';
 
-        $fillColor = ($this->fillColor != null) ? $this->toDOMColor($this->fillColor) : 'none';
+        $fillColor = ($this->fillColor != null) ? $this->fillColor->toDomColor() : 'none';
         $style .= 'fill:'.$fillColor.';';
 
         return $style.'"';

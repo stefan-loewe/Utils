@@ -61,7 +61,7 @@ interface IDrawingPane
      * This method draws text at the given position.
      *
      * @param Point $topLeftCorner the top left corner of the text to draw
-     * @param type $text the text to draw
+     * @param string $text the text to draw
      * @return IDrawingPane $this
      */
     function drawText(Point $topLeftCorner, $text);

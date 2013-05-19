@@ -24,7 +24,7 @@ class SimpleFontMetricSocketService extends FontMetricSocketService
     }
 
     /**
-     * This method start as blocking socket server, waits for and consumes exactly one request to extract and add a font definition, and stops therafter.
+     * This method start a blocking socket server, waits for and consumes exactly one request to extract and add a font definition, and stops therafter.
      *
      * This method expects the request to be a valid \ws\loewe\Utils\Http\HttpRequest which contains a valid font definition.
      *

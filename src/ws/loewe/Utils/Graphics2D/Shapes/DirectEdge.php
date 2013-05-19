@@ -2,8 +2,6 @@
 
 namespace ws\loewe\Utils\Graphics2D\Shapes;
 
-use \ws\loewe\Utils\Geom\Point;
-use \ws\loewe\Utils\Graphics2D\Shapes\Styles\ShapeStyle;
 use \ws\loewe\Utils\Graphics2D\Shapes\Styles\EdgeStyle;
 use \ws\loewe\Utils\Graphics2D\DrawingPanes\DrawingPane;
 
@@ -32,13 +30,13 @@ class DirectEdge extends Edge
         $document->setStrokeWidth($this->style->width)
                 ->setStrokeColor($this->style->color);
 
-        $source = $this->source->getConnectionPoint(Shape::SOUTH);
+        $source = $this->source->getConnectionPoint(IShape::SOUTH);
 
         // draw a direct line from the source to each target
-        foreach($this->targets as $cnt => $target)
+        foreach($this->targets as $target)
         {
             $document->drawLine($source,
-                    $target->getConnectionPoint(Shape::NORTH));
+                    $target->getConnectionPoint(IShape::NORTH));
         }
     }
 }

@@ -2,7 +2,6 @@
 
 namespace ws\loewe\Utils\Graphics2D\DrawingPanes;
 
-use \ws\loewe\Utils\Color\RgbColor;
 use \ws\loewe\Utils\Geom\Dimension;
 
 /**
@@ -30,6 +29,13 @@ abstract class DomDrawingPane extends DrawingPane
      * @var string
      */
     protected $classNameEdge    = 'rt_edge';
+
+    /**
+     * the name of the CSS class for the text shapes.
+     *
+     * @var string
+     */
+    protected $classNameText    = 'text';
 
     /**
      * This method acts as the constructor of the class.
@@ -94,7 +100,7 @@ abstract class DomDrawingPane extends DrawingPane
      */
     public function setClassNameNode($classNameNode)
     {
-        $this->classNameNode = classNameNode;
+        $this->classNameNode = $classNameNode;
     }
 
     /**

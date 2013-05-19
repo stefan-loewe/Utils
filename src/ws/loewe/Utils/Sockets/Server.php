@@ -14,35 +14,42 @@ abstract class Server
      *
      * @var ServerSocket
      */
-    protected $socket   = null;
+    protected $socket     = null;
 
     /**
      * the collection of clients currently connected to the server
      *
-     * @var array[string]ServerSocket
+     * @var array<ServerSocket>
      */
-    protected $clients  = array();
+    protected $clients    = array();
 
     /**
      * the adress of the socket
      *
      * @var string
      */
-    private $address    = '127.0.0.1';
+    private $address      = '127.0.0.1';
 
     /**
      * the port of the socket
      *
      * @var int
      */
-    private $port       = 9999;
+    private $port         = 9999;
 
     /**
      * the timeout of the socket-select call
      *
      * @var int
      */
-    protected $timeout  = 0;
+    protected $timeout    = 0;
+
+    /**
+     * the flag to show whether or not the server is running
+     *
+     * @var boolean
+     */
+    protected $isRunning  = FALSE;
 
     /**
      * This method acts as the constructor of the class.

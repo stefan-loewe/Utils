@@ -54,4 +54,11 @@ abstract class FontMetricSocketService extends FontMetricService
 
         $this->startSocketServer($textStyle, $fontManager);
     }
+    
+    /**
+     * This method start a socket server.
+     * @param TextStyle $textStyle the text style for which the font definition is needed
+     * @param FontManager $fontManager the font manager to which the font definition is added to
+     */
+    abstract public function startSocketServer(TextStyle $textStyle, FontManager $fontManager);
 }

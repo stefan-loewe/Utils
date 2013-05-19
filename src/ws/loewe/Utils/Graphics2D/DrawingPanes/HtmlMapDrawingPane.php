@@ -2,9 +2,6 @@
 
 namespace ws\loewe\Utils\Graphics2D\DrawingPanes;
 
-use \ws\loewe\Utils\Color\Color;
-use \ws\loewe\Utils\Color\RgbColor;
-
 use \ws\loewe\Utils\Geom\Dimension;
 use \ws\loewe\Utils\Geom\Point;
 
@@ -18,14 +15,15 @@ class HtmlMapDrawingPane extends DomDrawingPane
      *
      * @var string
      */
-    private $mapName = null;
+    private $mapName = 'HtmlDrawingPaneMap';
 
     /**
      * This method acts as the constructor for the class.
      *
      * @param Dimension $dimension the dimension of the document
+     * @param string $mapname the name of the HTML map
      */
-    public function __construct(Dimension $dimension)
+    public function __construct(Dimension $dimension, $mapName)
     {
         parent::__construct($dimension);
 
@@ -109,7 +107,7 @@ class HtmlMapDrawingPane extends DomDrawingPane
      */
     public function drawText(Point $topLeftCorner, $text)
     {
-        return $this;
+        throw new \BadMethodCallException('text cannot be drawn on html maps');
     }
 
     public function save()

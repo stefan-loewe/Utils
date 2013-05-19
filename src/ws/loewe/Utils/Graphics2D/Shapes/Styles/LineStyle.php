@@ -3,7 +3,6 @@
 namespace ws\loewe\Utils\Graphics2D\Shapes\Styles;
 
 use \ws\loewe\Utils\Color\Color;
-use \ws\loewe\Utils\Color\RgbColor;
 
 /**
  * This class implements an abstract style for lines.
@@ -20,7 +19,7 @@ abstract class LineStyle implements IStyle
     /**
      * the color of the line
      *
-     * @var RGBColor
+     * @var Color
      */
     protected $color = null;
 

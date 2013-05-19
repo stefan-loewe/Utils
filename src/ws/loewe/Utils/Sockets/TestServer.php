@@ -12,11 +12,13 @@ class TestServer extends Server
     /**
      * This method acts as the constructor of the class.
      *
-     * @param int $port the port the server is bound to.
+     * @param string $address the address to which the server socket is bound to
+     * @param int $port the port to which the server socket is bound to
+     * @param int $timeout the timeout of the socket-select call
      */
-    public function __construct($port)
+    public function __construct($address, $port, $timeout)
     {
-        parent::__construct($port);
+        parent::__construct($address, $port, $timeout);
     }
 
     /**

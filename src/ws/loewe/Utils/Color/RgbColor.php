@@ -59,4 +59,8 @@ class RgbColor extends Color
             str_pad(dechex($this->green), 2, '0').
             str_pad(dechex($this->blue), 2, '0');
     }
+    
+    public function toDomColor() {
+      return $this->__toString();
+    }
 }

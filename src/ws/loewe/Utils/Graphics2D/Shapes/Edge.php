@@ -2,8 +2,6 @@
 
 namespace ws\loewe\Utils\Graphics2D\Shapes;
 
-use \ws\loewe\Utils\Geom\Point;
-use \ws\loewe\Utils\Graphics2D\Shapes\Styles\ShapeStyle;
 use \ws\loewe\Utils\Graphics2D\Shapes\Styles\EdgeStyle;
 
 /**
@@ -21,9 +19,16 @@ abstract class Edge extends Shape
     /**
      * the collection of targets of the edge
      *
-     * @var \ArrayAccess of IShapes
+     * @var \ArrayAccess<IShape>
      */
     protected $targets      = null;
+
+    /**
+     * the style of the edge
+     *
+     * @var EdgeStyle
+     */
+    protected $style = null;
 
     /**
      * This acts as the constructor of the class.
@@ -34,11 +39,9 @@ abstract class Edge extends Shape
      */
     public function __construct(IShape $source, \ArrayAccess $targets, EdgeStyle $edgeStyle)
     {
-        parent::__construct($edgeStyle);
-
         $this->source       = $source;
-
         $this->targets      = $targets;
+        $this->style        = $edgeStyle;
     }
 
     /**

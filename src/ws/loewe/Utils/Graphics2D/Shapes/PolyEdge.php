@@ -2,9 +2,7 @@
 
 namespace ws\loewe\Utils\Graphics2D\Shapes;
 
-use \ws\loewe\Utils\Geom\Point;
 use \ws\loewe\Utils\Geom\Dimension;
-use \ws\loewe\Utils\Graphics2D\Shapes\Styles\ShapeStyle;
 use \ws\loewe\Utils\Graphics2D\Shapes\Styles\EdgeStyle;
 use \ws\loewe\Utils\Graphics2D\DrawingPanes\DrawingPane;
 
@@ -37,9 +35,9 @@ class PolyEdge extends Edge
                     /*->setFillColor(null)*/;
 
             // get the connection points of the source, its first and last child
-            $source = $this->source->getConnectionPoint(Shape::SOUTH);
-            $childF = $this->targets[0]->getConnectionPoint(Shape::NORTH);
-            $childL = $this->targets[$this->targets->count() - 1]->getConnectionPoint(Shape::NORTH);
+            $source = $this->source->getConnectionPoint(IShape::SOUTH);
+            $childF = $this->targets[0]->getConnectionPoint(IShape::NORTH);
+            $childL = $this->targets[$this->targets->count() - 1]->getConnectionPoint(IShape::NORTH);
 
             // the distance between the bottom edge of the source and the top edge of the targets
             $offset = ($childF->y - $source->y) / 2;
@@ -55,7 +53,7 @@ class PolyEdge extends Edge
             // draw a vertical line from the top border of each target to the horizontal connector
             foreach($this->targets as $target)
             {
-                $south  = $target->getConnectionPoint(Shape::NORTH);
+                $south  = $target->getConnectionPoint(IShape::NORTH);
                 $north  = $south->moveBy(new Dimension(0, -$offset));
                 $document->drawLine($north, $south);
             }

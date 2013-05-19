@@ -9,7 +9,7 @@ use \ws\loewe\Utils\Geom\Point;
 /**
  * This class represents a text shape.
  */
-class Text extends Shape
+class Text implements IShape
 {
     /**
      * the top-left corner of the Text
@@ -17,6 +17,13 @@ class Text extends Shape
      * @var Point
      */
     private $topLeftCorner  = null;
+
+    /**
+     * the style of the text
+     *
+     * @var TextStyle
+     */
+    protected $style = null;
 
     /**
      * the actual text of the Text
@@ -30,15 +37,13 @@ class Text extends Shape
      *
      * @param Point $topLeftCorner the top-left corner where to position the text
      * @param TextStyle $textStyle the textStyle to use for the text.
-     * @param string $treeNode the actual text of the Text
+     * @param string $text the actual text of the text shape
      */
     public function __construct(Point $topLeftCorner, TextStyle $style, $text)
     {
-        parent::__construct($style);
-
-        $this->topLeftCorner    = $topLeftCorner;
-
-        $this->text             = $text;
+        $this->topLeftCorner  = $topLeftCorner;
+        $this->style          = $style;
+        $this->text           = $text;
     }
 
     /**
@@ -53,7 +58,7 @@ class Text extends Shape
     }
 
     /**
-     * @todo: tobe implemented later
+     * @todo: to be implemented later
      */
     public function getConnectionPoint($orientation)
     {

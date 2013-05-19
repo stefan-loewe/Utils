@@ -73,8 +73,8 @@ class ServerSocket {
     /**
      * This method binds the socket to the given host address and port.
      *
-     * @param type $hostAddress the host address to which the socket will be bound
-     * @param type $portNumber the port to which the socket will be bound
+     * @param string $hostAddress the host address to which the socket will be bound
+     * @param int $portNumber the port to which the socket will be bound
      */
     public function bind($hostAddress, $portNumber) {
         Logger::log(Logger::INFO, 'binding socket to '.$hostAddress.':'.$portNumber);
@@ -110,7 +110,7 @@ class ServerSocket {
      * @param array $writingClients a reference to the array of writing clients of the socket
      * @param array $checkedClients a reference to the array of checked clients of the socket
      * @param int $timeout the timeout used for the select system call
-     * @return type
+     * @return int|false the result of php's socket_select call
      */
     public function select(array &$readingClients, array &$writingClients, array &$checkedClients, $timeout = null) {
         return socket_select($readingClients, $writingClients, $checkedClients, $timeout);
@@ -128,7 +128,7 @@ class ServerSocket {
     /**
      * This method reads a string of the maximal given lenght from the socket.
      *
-     * @param type $length the maximal length of the string to read
+     * @param int $length the maximal length of the string to read
      * @return string the string read from the socket, or false on error
      */
     public function read($length) {
@@ -139,7 +139,7 @@ class ServerSocket {
     /**
      * This method reads a complete line from the socket.
      *
-     * @param type $length the maximal length of the string to read
+     * @param int $length the maximal length of the string to read
      * @return string the string read from the socket, or false on error
      */
     public function readLine($length) {

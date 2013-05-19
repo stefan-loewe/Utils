@@ -28,4 +28,11 @@ abstract class Color
     {
         return $this->$memberName;
     }
+    
+    /**
+     * This method returns the DOM-representation of the color.
+     * 
+     * @return string the DOM-representation of the color
+     */
+    abstract public function toDomColor();
 }

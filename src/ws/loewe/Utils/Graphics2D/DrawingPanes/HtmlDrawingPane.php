@@ -2,9 +2,6 @@
 
 namespace ws\loewe\Utils\Graphics2D\DrawingPanes;
 
-use \ws\loewe\Utils\Color\Color;
-use \ws\loewe\Utils\Color\RgbColor;
-
 use \ws\loewe\Utils\Geom\Dimension;
 use \ws\loewe\Utils\Geom\Point;
 
@@ -42,8 +39,6 @@ class HtmlDrawingPane extends DomDrawingPane
      */
     public function drawLine(Point $source, Point $target)
     {
-        $style = null;
-
         // vertical line
         if($source->x == $target->x)
         {
@@ -93,8 +88,6 @@ class HtmlDrawingPane extends DomDrawingPane
     public function drawEllipse(Point $center, Dimension $dimension)
     {
         throw new \BadMethodCallException('arcs cannot be drawn with plain html');
-
-        return $this;
     }
 
     public function drawRectangle(Point $topLeftCorner, Dimension $dimension)
@@ -132,8 +125,6 @@ class HtmlDrawingPane extends DomDrawingPane
     function drawPolygon(\Traversable $points)
     {
         throw new \BadMethodCallException('polygons cannot be drawn with plain html');
-
-        return $this;
     }
 
     /**
@@ -141,8 +132,6 @@ class HtmlDrawingPane extends DomDrawingPane
      */
     public function drawText(Point $topLeftCorner, $text)
     {
-        $this->classNameText = 'text';
-
         $style = 'position: absolute;'.
                     ' top:'.ceil($topLeftCorner->y/* - ($this->fontSize * 3/4)*//* + ($this->fontSize / 20)*/).'px;'.
                     ' left:'.($topLeftCorner->x).'px;'.

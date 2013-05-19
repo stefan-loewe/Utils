@@ -13,7 +13,7 @@ use \ws\loewe\Utils\URL\Url;
 abstract class FontMetricService
 {
     /**
-     * the ASCII code for the blank, i.e. " "
+     * the ASCII code for the blank, i.e., " "
      */
     const ASCII_BLANK = 32;
 
