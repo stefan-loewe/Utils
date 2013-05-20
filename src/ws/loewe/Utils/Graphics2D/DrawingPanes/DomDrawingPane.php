@@ -2,7 +2,8 @@
 
 namespace ws\loewe\Utils\Graphics2D\DrawingPanes;
 
-use \ws\loewe\Utils\Geom\Dimension;
+use ws\loewe\Utils\Color\RgbColor;
+use ws\loewe\Utils\Geom\Dimension;
 
 /**
  * This class implements an abstract drawing pane for DOM output.
@@ -115,12 +116,12 @@ abstract class DomDrawingPane extends DrawingPane
     }
 
     /**
-     * This method converts a RGBColor to the DOM representation of the color.
+     * This method converts a RgbColor to the DOM representation of the color.
      *
-     * @param RGBColor $color the color to convert
+     * @param RgbColor $color the color to convert
      * @return string the DOM representation of the color
      */
-    public function toDOMColor(RGBColor $color)
+    public function toDOMColor(RgbColor $color)
     {
         return $color->__toString();
     }
