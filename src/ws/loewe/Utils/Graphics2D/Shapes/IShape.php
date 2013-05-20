@@ -24,12 +24,12 @@ interface IShape
      *
      * @param DrawingPane $drawingPane
      */
-    abstract public function draw(DrawingPane $drawingPane);
+    function draw(DrawingPane $drawingPane);
 
     /**
      * This method returns the connection points of a shape.
      *
      * @param int $orientation where the connections should face to, either IShape::NORTH or IShape::SOUTH
      */
-    abstract public function getConnectionPoint($orientation);
+    function getConnectionPoint($orientation);
 }

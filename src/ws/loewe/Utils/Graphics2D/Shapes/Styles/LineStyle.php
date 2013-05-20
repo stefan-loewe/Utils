@@ -3,6 +3,7 @@
 namespace ws\loewe\Utils\Graphics2D\Shapes\Styles;
 
 use \ws\loewe\Utils\Color\Color;
+use \ws\loewe\Utils\Color\RgbColor;
 
 /**
  * This class implements an abstract style for lines.
@@ -33,7 +34,7 @@ abstract class LineStyle implements IStyle
     {
         $this->width = $width;
 
-        $this->color = $color === null ? new RGBColor(0, 0, 0) : $color;
+        $this->color = $color === null ? new RgbColor(0, 0, 0) : $color;
     }
 
     /**
