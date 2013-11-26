@@ -51,7 +51,7 @@ class TreeNode implements \IteratorAggregate
      *
      * @param int $size the size of the tree including the current node
      * @param int $maxDegree the maximal degree of the nodes, if 0 is passed, the degree is unlimited
-     * @return array[string]TreeNode
+     * @return array<TreeNode>
      */
     public function populateRandomly($size = 100, $maxDegree = 0)
     {
@@ -198,7 +198,7 @@ class TreeNode implements \IteratorAggregate
     }
 
     /**
-     * This method determines if the current node is an ancestor of another one
+     * This method determines if the current node is an ancestor of another one. Each node is an ancestor of itself.
      *
      * @param TreeNode $descendant
      * @return boolean true if the current node is an ancestor
@@ -217,7 +217,7 @@ class TreeNode implements \IteratorAggregate
     }
 
     /**
-     * This method determines if the current node is a descendant of another one
+     * This method determines if the current node is a descendant of another one. Each node is a descendant of itself.
      *
      * @param TreeNode $ancestor
      * @return boolean true if the current node is a descendant
@@ -263,7 +263,7 @@ class TreeNode implements \IteratorAggregate
         foreach($this->children as $child)
             return $child;
 
-        throw new \RuntimeException('The node has no children!');
+        throw new \OutOfBoundsException('The node has no children!');
     }
 
     /**
@@ -275,7 +275,7 @@ class TreeNode implements \IteratorAggregate
     public function getLastChild()
     {
         if(($lastChild = end($this->children)) === FALSE)
-            throw new \RuntimeException('The node has no children!');
+            throw new \OutOfBoundsException('The node has no children!');
         else
             return $lastChild;
     }

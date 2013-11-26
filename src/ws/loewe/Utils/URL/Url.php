@@ -117,7 +117,7 @@ class Url
         if($this->port !== null)
             $result = $result.':'.$this->port;
 
-        return $result.$this->path;
+        return $result.'/'.$this->path;
     }
 
     /**
@@ -133,7 +133,7 @@ class Url
 
         // change from http to https
         if($protocol === 'http' && !empty($_SERVER['HTTPS']))
-            $protocol = $protocol.'s';
+            $protocol = 'https';
 
         $host = $_SERVER['SERVER_NAME'];
 
