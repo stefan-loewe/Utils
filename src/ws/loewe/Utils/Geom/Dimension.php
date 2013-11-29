@@ -52,7 +52,7 @@ class Dimension
       $hash = $width.':'.$height;
 
       if(!isset(self::$cache[$hash])) {
-        self::$cache[$hash] = new Dimension($width, $height);
+        self::$cache[$hash] = new Dimension($width, $height); 
       }
       
       return self::$cache[$hash];

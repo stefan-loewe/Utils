@@ -52,7 +52,7 @@ class Point
       $hash = $x.':'.$y;
       
       if(!isset(self::$cache[$hash])) {
-        self::$cache[$hash] = new Point($x, $y);
+        self::$cache[$hash] = new Point($x, $y); 
       }
       
       return self::$cache[$hash];
