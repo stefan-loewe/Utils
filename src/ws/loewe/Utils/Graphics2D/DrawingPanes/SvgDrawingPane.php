@@ -42,15 +42,11 @@ class SvgDrawingPane extends DomDrawingPane
         if($this->strokeWidth % 2)
         {
             foreach($points as $index => $point)
-                $points[$index] = $points[$index]->moveBy(new Dimension(0.25, 0.25));
+              $points[$index] = $points[$index]->moveBy(Dimension::createInstance(0.25, 0.25));
         }
 
-        $this->fragment->appendXML('<polyline'
-            .' points="'.$this->pointsToString($points).'"'
-            .' style="fill:none;'
-                .' stroke:'.$this->strokeColor->toDomColor().';'
-                .' stroke-width:'.$this->strokeWidth.';"'
-            .'/>');
+        $this->fragment->appendXML(sprintf('<polyline points="%s" style="fill:none; stroke:%s; stroke-width:%d;"/>',
+                $this->pointsToString($points), $this->strokeColor->toDomColor(), $this->strokeWidth));
 
         return $this;
     }
@@ -60,13 +56,8 @@ class SvgDrawingPane extends DomDrawingPane
      */
     public function drawEllipse(Point $center, Dimension $dimension)
     {
-        $this->fragment->appendXML('<ellipse'
-            .' cx="'.$center->x.'"'
-            .' cy="'.$center->y.'"'
-            .' rx="'.(($dimension->width / 2) + ($this->strokeWidth / 2)).'"'
-            .' ry="'.(($dimension->height / 2) + ($this->strokeWidth / 2)).'"'
-            .$this->getStyleAttribute()
-            .' />');
+        $this->fragment->appendXML(sprintf('<ellipse cx="%d" cy="%d" rx="%d" ry="%d" %s/>',
+                $center->x, $center->y, $dimension->width / 2, $dimension->height / 2, $this->strokeWidth / 2));
 
         return $this;
     }
@@ -90,18 +81,13 @@ class SvgDrawingPane extends DomDrawingPane
      */
     public function drawRectangle(Point $topLeftCorner, Dimension $dimension)
     {
-        $topLeftCorner  = $topLeftCorner->moveBy(new Dimension(-$this->strokeWidth / 2, -$this->strokeWidth / 2));
-        $dimension      = $dimension->resizeBy(new Dimension($this->strokeWidth, $this->strokeWidth));
+        $offset         = $this->strokeWidth / 2;
+        $topLeftCorner  = $topLeftCorner->moveBy(Dimension::createInstance(-$offset, -$offset));
+        $dimension      = $dimension->resizeBy(Dimension::createInstance($this->strokeWidth, $this->strokeWidth));
 
-        $this->fragment->appendXML('<rect'
-            .' class="node"'
-            .' x="'.($topLeftCorner->x).'"'
-            .' y="'.($topLeftCorner->y).'"'
-            .' width="'.($dimension->width).'"'
-            .' height="'.($dimension->height).'"'
-            .$this->getStyleAttribute()
-            .' />');
-
+        $this->fragment->appendXML(sprintf('<rect class="node" x="%d" y="%d" width="%d" height="%d" %s/>',
+                $topLeftCorner->x, $topLeftCorner->y, $dimension->width, $dimension->height, $this->getStyleAttribute()));
+        
         return $this;
     }
 
@@ -109,7 +95,7 @@ class SvgDrawingPane extends DomDrawingPane
      *
      */
     public function drawText(Point $topLeftCorner, $text)
-    {
+    {/*
         $x = $topLeftCorner->x;
         $y = ceil($topLeftCorner->y + $this->fontSize);
 
@@ -123,7 +109,7 @@ class SvgDrawingPane extends DomDrawingPane
                                         .' fill="'.$this->fontColor->toDomColor().'">'
                                             .$lines
                                     .' </text>');
-
+*/
         return $this;
     }
 

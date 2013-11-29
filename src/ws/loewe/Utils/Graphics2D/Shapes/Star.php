@@ -107,13 +107,13 @@ class Star extends Shape
         {
             // add a point of the outter pentagon ...
             $rad        = deg2rad($i);
-            $point      = new Point(-sin($rad) * $outterRadius, -cos($rad) * $outterRadius);
-            $points[]   = $point->moveBy(new Dimension($this->center->x, $this->center->y));
+            $point      = Point::createInstance(-sin($rad) * $outterRadius, -cos($rad) * $outterRadius);
+            $points[]   = $point->moveBy(Dimension::createInstance($this->center->x, $this->center->y));
 
             // ... followed by a point of the outter pentagon
             $rad        = deg2rad($i + self::$INNER_ANGLE / 2);
-            $point      = new Point(-sin($rad) * $innerRadius, -cos($rad) * $innerRadius);
-            $points[]   = $point->moveBy(new Dimension($this->center->x, $this->center->y));
+            $point      = Point::createInstance(-sin($rad) * $innerRadius, -cos($rad) * $innerRadius);
+            $points[]   = $point->moveBy(Dimension::createInstance($this->center->x, $this->center->y));
         }
 
         return $points;

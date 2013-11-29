@@ -29,6 +29,13 @@ class RgbColor extends Color
     protected $blue        = 0;
 
     /**
+     * the representation of the color as DOM string, e.g. #000000 for black
+     *
+     * @var string
+     */
+    private $domColor     = null;
+
+    /**
      * This method is the constructor of the class.
      *
      * @param int $red the red color component
@@ -54,10 +61,14 @@ class RgbColor extends Color
      */
     public function __toString()
     {
-        return '#'.
+        if($this->domColor === null) {
+          $this->domColor = '#'.
             str_pad(dechex($this->red), 2, '0').
             str_pad(dechex($this->green), 2, '0').
             str_pad(dechex($this->blue), 2, '0');
+        }
+        
+        return $this->domColor;
     }
     
     public function toDomColor() {

@@ -22,16 +22,40 @@ class Dimension
     private $height = null;
 
     /**
+     * the cache used for this value object class
+     *
+     * @var array
+     */
+    private static $cache = array();
+
+    /**
      * This method acts as the constructor of the class.
      *
      * @param int $width the width of the dimension
      * @param int $height the height of the dimension
      */
-    public function __construct($width, $height)
+    private function __construct($width, $height)
     {
         $this->width    = $width;
 
         $this->height   = $height;
+    }
+
+    /**
+     * This method creates a new Dimension.
+     * 
+     * @param int $width the width of the dimension
+     * @param int $height the height of the dimension
+     * @return Dimension the new Dimension
+     */
+    public static function createInstance($width, $height) {
+      $hash = $width.':'.$height;
+
+      if(!isset(self::$cache[$hash])) {
+        self::$cache[$hash] = new Dimension($width, $height);
+      }
+      
+      return self::$cache[$hash];
     }
 
     /**
@@ -50,11 +74,11 @@ class Dimension
      * This method resizes a dimension by the offset encoded by a dimension.
      *
      * @param Dimension $dimension the offset by which the dimension has to be resized
-     * @return Dimension a new Dimension resized by the offset encoded in the given Point
+     * @return Dimension a new Dimension resized by the offset encoded in the given dimension
     */
     public function resizeBy(Dimension $dimension)
     {
-        return new Dimension($this->width + $dimension->width, $this->height + $dimension->height);
+        return Dimension::createInstance($this->width + $dimension->width, $this->height + $dimension->height);
     }
 
     /**
@@ -63,11 +87,11 @@ class Dimension
      * This is only useful for chaining, as it merely is an alias for a copy-constructor.
      *
      * @param Dimension $dimension the offset by which the Dimension has to be resized
-     * @return Dimension a new Dimension resized by the offset encoded in the given Point
+     * @return Dimension a new Dimension resized by the offset encoded in the given dimension
     */
     public function resizeTo(Dimension $dimension)
     {
-        return new Dimension($dimension->width, $dimension->height);
+        return Dimension::createInstance($dimension->width, $dimension->height);
     }
 
     /**

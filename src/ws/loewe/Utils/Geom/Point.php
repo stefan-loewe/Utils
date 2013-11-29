@@ -22,17 +22,42 @@ class Point
     private $y = null;
 
     /**
+     * the cache used for this value object class
+     *
+     * @var array
+     */
+    private static $cache = array();
+
+    /**
      * This method acts as the constructor of the class.
      *
      * @param int $x the x-coordinate of the point
      * @param int $y the y-coordinate of the point
      */
-    public function __construct($x, $y)
+    private function __construct($x, $y)
     {
         $this->x = $x;
 
         $this->y = $y;
     }
+
+    /**
+     * This method creates a new Point.
+     * 
+     * @param int $x the x-coordinate of the point
+     * @param int $y the y-coordinate of the point
+     * @return Point the new Point
+     */
+    public static function createInstance($x, $y) {
+      $hash = $x.':'.$y;
+      
+      if(!isset(self::$cache[$hash])) {
+        self::$cache[$hash] = new Point($x, $y);
+      }
+      
+      return self::$cache[$hash];
+    }
+
 
     /**
      * This method is a magic getter method for the class.
@@ -54,7 +79,7 @@ class Point
      */
     public function setX($x)
     {
-        return new Point($x, $this->y);
+        return Point::createInstance($x, $this->y);
     }
 
     /**
@@ -65,7 +90,7 @@ class Point
      */
     public function setY($y)
     {
-        return new Point($this->x, $y);
+        return Point::createInstance($this->x, $y);
     }
 
     /**
@@ -76,7 +101,7 @@ class Point
      */
     public function moveBy(Dimension $dimension)
     {
-        return new Point($this->x + $dimension->width, $this->y + $dimension->height);
+        return Point::createInstance($this->x + $dimension->width, $this->y + $dimension->height);
     }
 
     /**
@@ -87,7 +112,7 @@ class Point
      */
     public function moveTo(Point $point)
     {
-        return new Point($this->x + $point->x, $this->y + $point->y);
+        return Point::createInstance($this->x + $point->x, $this->y + $point->y);
     }
 
     /**

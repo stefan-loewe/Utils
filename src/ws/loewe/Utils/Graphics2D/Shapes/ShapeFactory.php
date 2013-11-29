@@ -29,9 +29,9 @@ final class ShapeFactory
             return new Rectangle($topLeftCorner, $shapeStyle);
 
         else if($shapeStyle->type === ShapeStyle::ELLIPSE)
-            return new Ellipse($topLeftCorner->moveBy(new Dimension($shapeStyle->width / 2, $shapeStyle->height / 2)), $shapeStyle);
+            return new Ellipse($topLeftCorner->moveBy(Dimension::createInstance($shapeStyle->width / 2, $shapeStyle->height / 2)), $shapeStyle);
 
         else if($shapeStyle->type === ShapeStyle::STAR)
-            return new Star($topLeftCorner->moveBy(new Dimension($shapeStyle->width / 2, $shapeStyle->height / 2)), $shapeStyle);
+            return new Star($topLeftCorner->moveBy(Dimension::createInstance($shapeStyle->width / 2, $shapeStyle->height / 2)), $shapeStyle);
     }
 }

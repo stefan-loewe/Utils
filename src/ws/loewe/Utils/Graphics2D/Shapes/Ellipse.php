@@ -38,7 +38,7 @@ class Ellipse extends Shape
 
         $this->center       = $center;
 
-        $this->dimension    = new Dimension($this->style->width, $this->style->height);
+        $this->dimension    = Dimension::createInstance($this->style->width, $this->style->height);
     }
 
     /**
@@ -58,10 +58,10 @@ class Ellipse extends Shape
     public function getConnectionPoint($orientation)
     {
         if($orientation === IShape::NORTH)
-            $offset = new Dimension(0, -$this->style->height);
+            $offset = Dimension::createInstance(0, -$this->style->height);
 
         else if($orientation === IShape::SOUTH)
-            $offset = new Dimension(0, $this->dimension->height);
+            $offset = Dimension::createInstance(0, $this->dimension->height);
 
         return $this->center->moveBy($offset);
     }

@@ -37,11 +37,11 @@ class HtmlMapDrawingPane extends DomDrawingPane
     {
         $points = new \ArrayObject();
 
-        $points[] = $source->moveBy(new Dimension(-$this->strokeWidth * 2, 0));
-        $points[] = $source->moveBy(new Dimension($this->strokeWidth * 2, 0));
+        $points[] = $source->moveBy(Dimension::createInstance(-$this->strokeWidth * 2, 0));
+        $points[] = $source->moveBy(Dimension::createInstance($this->strokeWidth * 2, 0));
 
-        $points[] = $target->moveBy(new Dimension(-$this->strokeWidth * 2, 0));
-        $points[] = $target->moveBy(new Dimension($this->strokeWidth * 2, 0));
+        $points[] = $target->moveBy(Dimension::createInstance(-$this->strokeWidth * 2, 0));
+        $points[] = $target->moveBy(Dimension::createInstance($this->strokeWidth * 2, 0));
 
         return $this->drawPolygon($points);
     }
@@ -66,9 +66,9 @@ class HtmlMapDrawingPane extends DomDrawingPane
      */
     public function drawRectangle(Point $topLeftCorner, Dimension $dimension)
     {
-        $topLeftCorner  = $topLeftCorner->moveBy(new Dimension(-$this->strokeWidth, -$this->strokeWidth));
+        $topLeftCorner  = $topLeftCorner->moveBy(Dimension::createInstance(-$this->strokeWidth, -$this->strokeWidth));
 
-        $dimension      = $dimension->resizeBy(new Dimension(2 * $this->strokeWidth, 2 * $this->strokeWidth));
+        $dimension      = $dimension->resizeBy(Dimension::createInstance(2 * $this->strokeWidth, 2 * $this->strokeWidth));
 
         $code = '<area style="cursor: pointer;" shape="rect" coords="'.($topLeftCorner->x).
                 ', '.($topLeftCorner->y).
