@@ -4,6 +4,7 @@ namespace ws\loewe\Utils\Graphics2D\DrawingPanes;
 
 use \ws\loewe\Utils\Color\Color;
 use \ws\loewe\Utils\Geom\Dimension;
+use \ws\loewe\Utils\Graphics2D\Shapes\IShape;
 
 /**
  * This class implements an abstract drawing pane.
@@ -74,6 +75,15 @@ abstract class DrawingPane implements IDrawingPane
     public function __construct(Dimension $dimension)
     {
         $this->dimension = $dimension;
+    }
+
+    /**
+     * 
+     */
+    public function draw(IShape $shape) {
+      $shape->draw($this);
+      
+      return $this;
     }
 
     /**
