@@ -3,28 +3,30 @@
 namespace ws\loewe\Utils\Geom;
 
 /**
- * This class encapsulates the width and height of an object in the two-dimensional space, e.g. a rectangle or an ellipse.
+ * This class encapsulates the width and height of an object in the two-dimensional space,
+ * e.g. a rectangle or an ellipse.
  */
-class Dimension
-{
+class Dimension {
+    use \ws\loewe\Utils\Common\ValueObject;
+
     /**
      * the width of the dimension
      *
      * @var int
      */
-    private $width  = null;
+    private $width  = 0;
 
     /**
      * the height of the dimension
      *
      * @var int
      */
-    private $height = null;
+    private $height = 0;
 
     /**
      * the cache used for this value object class
      *
-     * @var array
+     * @var Dimension[string]
      */
     private static $cache = array();
 
@@ -34,11 +36,10 @@ class Dimension
      * @param int $width the width of the dimension
      * @param int $height the height of the dimension
      */
-    private function __construct($width, $height)
-    {
-        $this->width    = $width;
+    private function __construct($width, $height) {
+        $this->width  = $width;
 
-        $this->height   = $height;
+        $this->height = $height;
     }
 
     /**
@@ -59,25 +60,12 @@ class Dimension
     }
 
     /**
-     * This method is a magic getter method for the class.
-     *
-     * @todo replace this with Trait in PHP 5.4
-     * @param string $memberName the name of the member to get
-     * @return mixed the value of the member
-     */
-    public function __get($memberName)
-    {
-        return $this->$memberName;
-    }
-
-    /**
      * This method resizes a dimension by the offset encoded by a dimension.
      *
      * @param Dimension $dimension the offset by which the dimension has to be resized
      * @return Dimension a new Dimension resized by the offset encoded in the given dimension
     */
-    public function resizeBy(Dimension $dimension)
-    {
+    public function resizeBy(Dimension $dimension) {
         return Dimension::createInstance($this->width + $dimension->width, $this->height + $dimension->height);
     }
 
@@ -89,8 +77,7 @@ class Dimension
      * @param Dimension $dimension the offset by which the Dimension has to be resized
      * @return Dimension a new Dimension resized by the offset encoded in the given dimension
     */
-    public function resizeTo(Dimension $dimension)
-    {
+    public function resizeTo(Dimension $dimension) {
         return Dimension::createInstance($dimension->width, $dimension->height);
     }
 
@@ -99,9 +86,7 @@ class Dimension
      *
      * @return string the string representation of the dimension
      */
-    public function __toString()
-    {
+    public function __toString() {
         return 'width: '.$this->width.' / height: '.$this->height;
     }
 }
-?>
